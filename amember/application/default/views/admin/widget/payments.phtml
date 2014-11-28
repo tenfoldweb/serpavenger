@@ -1,0 +1,40 @@
+<?php $lastPaymentsList = Am_Di::getInstance()->invoicePaymentTable->selectLast($num); ?>
+<div class="admin-last admin-lastpayments">
+    <h2><?php __e('Last %s Payments', $num); ?></h2>
+    <div class="grid-container">
+        <table class="grid">
+            <tr>
+                <th class="helper-corner-left" nowrap="nowrap"><?php __e('Date/Time') ?></th>
+                <th><?php __e('Invoice') ?></th>
+                <th class="not-important"><?php __e('Items') ?></th>
+                <th><?php __e('Amount') ?></th>
+                <th class="helper-corner-right"><?php __e('User') ?></th>
+            </tr>
+            <?php foreach ($lastPaymentsList as $p): ?>
+            <tr<?php
+            if (@$rownum++% 2)
+            {
+            echo ' class="odd" ';
+            }
+            ?>>
+                <td nowrap="nowrap"><time datetime="<?php p(date('c', amstrtotime($p->dattm))) ?>" title="<?php p($this->getElapsedTime($p->dattm)) ?>"><?php p(amDate($p->dattm)) ?><br /><small><?php p(amTime($p->dattm)) ?></small></time></td>
+                <td><a class="link" href="<?php echo REL_ROOT_URL ?>/admin-user-payments/index/user_id/<?php p($p->user_id) ?>#invoice-<?php p($p->invoice_id) ?>"><?php p($p->invoice_id) ?>/<?php p($p->public_id) ?></a><br />
+                    <small><?php p($p->paysys_id) ?></small></td>
+                <td><?php p($p->items) ?></td>
+                <td>
+                    <?php p(Am_Currency::render($p->amount, $p->currency)) ?>
+                    <?php if (!is_null($p->refund_amount)) : ?>
+                    <span class="widget-payments-refund-note">(<span class="red"><?php __e('Refund') ?> <?php p(Am_Currency::render($p->refund_amount)) ?> <?php __e('at') ?> <?php p(amDatetime($p->refund_dattm)) ?></span>)</span>
+                    <?php endif; ?>
+                </td>
+                <td><?php if ($p->dattm >= $p->added && (amstrtotime($p->dattm) - amstrtotime($p->added)) < 3600) : ?>
+                    <span style="background:#FFFFCF; padding:0 4px; font-size:8px; line-height:9px; text-transform: uppercase; border-radius:5px;"><?php __e('new') ?></span>
+                    <?php endif; ?>
+                    <strong><?php p($p->name) ?></strong>
+                    (<a  class="link" href="<?php echo $this->userUrl($p->user_id) ?>"><?php p($p->login) ?></a>)<br />
+                    <?php p($p->email) ?></td>
+            </tr>
+            <?php endforeach ?>
+        </table>
+    </div>
+</div>

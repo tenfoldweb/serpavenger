@@ -1,0 +1,62 @@
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(45) NOT NULL,
+  `user_agent` varchar(120) DEFAULT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+);
+
+CREATE TABLE IF NOT EXISTS `domains` (
+  `domainid` int(11) NOT NULL AUTO_INCREMENT,
+  `networkname` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `cmstype` varchar(255) DEFAULT NULL,
+  `domainname` varchar(255) DEFAULT NULL,
+  `pagerank` int(11) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `domainip` varchar(255) DEFAULT NULL,
+  `dns` varchar(255) DEFAULT NULL,
+  `posts` int(11) DEFAULT NULL,
+  `domainupdated` varchar(255) DEFAULT NULL,
+  `domainregistrar` varchar(255) DEFAULT NULL,
+  `domainexpiry` varchar(255) DEFAULT NULL,
+  `obl` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `indexed` tinyint(4) DEFAULT NULL,
+  UNIQUE KEY `domainid` (`domainid`)
+);
+
+INSERT INTO `domains` (`domainid`, `networkname`, `type`, `cmstype`, `domainname`, `pagerank`, `age`, `domainip`, `dns`, `posts`, `domainupdated`, `domainregistrar`, `domainexpiry`, `obl`, `username`, `password`, `indexed`) VALUES
+(1, 'General PR Net', 'Blog', 'php', 'xyz.com', 4, 2, '175.54.29.74', 'ns1.welcome.com', 19, '25/12/2013', 'Godaddy', '11/09/2015', 8, 'user', 'user', 1);
+
+CREATE TABLE IF NOT EXISTS `posts` (
+  `postid` int(11) NOT NULL AUTO_INCREMENT,
+  `domainid` int(11) DEFAULT NULL,
+  `posturl` varchar(255) DEFAULT NULL,
+  `postcreated` varchar(255) DEFAULT NULL,
+  `postupdated` varchar(255) DEFAULT NULL,
+  `hp` tinyint(4) DEFAULT NULL,
+  `sc` tinyint(4) DEFAULT NULL,
+  `comments` int(11) DEFAULT NULL,
+  `obl` int(11) DEFAULT NULL,
+  `anchor1` varchar(255) DEFAULT NULL,
+  `link1` varchar(255) DEFAULT NULL,
+  `anchor2` varchar(255) DEFAULT NULL,
+  `link2` varchar(255) DEFAULT NULL,
+  `anchor3` varchar(255) DEFAULT NULL,
+  `link3` varchar(255) DEFAULT NULL,
+  UNIQUE KEY `postid` (`postid`)
+);
+
+INSERT INTO `posts` (`postid`, `domainid`, `posturl`, `postcreated`, `postupdated`, `hp`, `sc`, `comments`, `obl`, `anchor1`, `link1`, `anchor2`, `link2`, `anchor3`, `link3`) VALUES
+(1, 1, '/test-url-111', '12/05/2013', '06/03/2014', 1, 0, 5, 3, 'social media', 'youtube.com', 'yahoo', 'yahoo.com', 'google', 'gllgloe.co.in');
+
+CREATE TABLE `serpaven_serpnew`.`serp_user_title` (
+`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` INT( 11 ) NOT NULL ,
+`title` TEXT NOT NULL ,
+`date_entered` DATETIME NOT NULL
+)

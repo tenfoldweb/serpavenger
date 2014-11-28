@@ -1,0 +1,9 @@
+<a href="<?php p($theme->getConfig('home_url', REL_ROOT_URL . '/')) ?>"><img class="am-header-content-logo" src="<?php
+if ($logo_id = $theme->getConfig('header_logo')) {
+    /* @var $di Am_Di */
+    $uplod = $di->uploadTable->load($logo_id);
+    echo REL_ROOT_URL . '/upload/get/' . $uplod->path;
+} else {
+    echo $this->_scriptImg('/header-logo.png');
+}
+?>" alt="<?php p($di->config->get('site_title')) ?>" /></a>

@@ -1,0 +1,3 @@
+<?php $title = $di->config->get('site_title', 'Index Page'); $this->setLayout('layout.phtml'); ?>
+<?php __e('If you are a registered member, please %slogin%s','<a href="' . Am_Controller::escape(REL_ROOT_URL . '/login') . '">','</a>') ?>.
+<?php __e('If you are not registered yet, please %ssignup%s','<a href="'. Am_Controller::escape(REL_ROOT_URL . '/signup') .'">','</a>') ?>.

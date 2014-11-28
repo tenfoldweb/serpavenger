@@ -1,0 +1,2 @@
+[28-Sep-2014 04:09:00 America/New_York] PHP Parse error:  syntax error, unexpected $end, expecting ',' or ';' in /home/serpaven/public_html/scottapi/service.php on line 193
+[30-Sep-2014 05:52:00 America/New_York] PHP Parse error:  syntax error, unexpected $end in /home/serpaven/public_html/scottapi/service_sp.php on line 595

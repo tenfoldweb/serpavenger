@@ -1,0 +1,37 @@
+<div class="user-invoice-record-details-commissions">
+    <em><?php __e('Commissions')?></em>
+    <div class="grid-container">
+        <table class="grid grid-small">
+            <tr>
+                <th><?php __e('Date') ?></th>
+                <th><?php __e('Affiliate') ?></th>
+                <th><?php __e('Product')?></th>
+                <th><?php __e('Type')?></th>
+                <th><?php __e('Commission')?></th>
+                <th><?php __e('Paid')?></th>
+                <th><?php __e('Tier')?></th>
+                <th></th>
+            </tr>
+            <?php foreach ($this->comm_items as $comm_item) : ?>
+            <tr<?php if ($comm_item->record_type == AffCommission::VOID) : ?> class="red"<?php endif; ?>>
+                <td><?php echo amDate($comm_item->date) ?></td>
+                <td><a class="link" href="<?php p($this->userUrl($comm_item->aff_id)) ?>"><?php p($comm_item->aff_name) ?></a></td>
+                <td><?php p($comm_item->product_title) ?></td>
+                <td><?php p($comm_item->record_type) ?></td>
+                <td class="align-right"><strong><?php if ($comm_item->record_type == AffCommission::VOID): ?>-&nbsp;<?php endif; ?><?php echo Am_Currency::render($comm_item->amount) ?></strong></td>
+                <td><?php p($comm_item->is_paid) ?></td>
+                <td><?php echo $comm_item->tier ? ($comm_item->tier + 1) . '-Tier' : '&ndash;' ?></td>
+                <td>
+                    <?php if($comm_item->is_voided) : ?>
+                        <span class="red"><?php __e('Voided') ?></span>
+                    <?php elseif ($comm_item->record_type == AffCommission::VOID): ?>
+                        (<?php __e('void') ?>)
+                    <?php else : ?>
+                        <a href="<?php p(REL_ROOT_URL) ?>/aff/admin-commission/void/id/<?php p($comm_item->commission_id) ?>" class="void-commission local"><?php __e('Void') ?></a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>

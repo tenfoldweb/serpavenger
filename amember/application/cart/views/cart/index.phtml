@@ -1,0 +1,44 @@
+<?php
+$title= $di->config->get('site_title') . ( $category ? (' : ' . $category->title) : '');
+$this->setLayout('cart/layout.phtml');
+?>
+<?php if (count($products)) : ?>
+    <?php if (empty($displayProductDetails) && $di->config->get('cart.layout') == 1) : ?>
+    <?php
+        $current = $left = $this->placeholder('product-coll-left');
+        $right = $this->placeholder('product-coll-right');
+        foreach ($products as $product) {
+            $current->captureStart();
+            include $this->_script('cart/_product.phtml');
+            $current->captureEnd();
+            $current = (($current === $left) ? $right : $left);
+        }
+    ?>
+    <div class="am-cart-layout-two-coll">
+        <div class="am-cart-layout-two-coll-coll am-cart-layout-two-coll-coll-left">
+            <div class="am-cart-layout-two-coll-content">
+                <?php echo $left ?>
+            </div>
+        </div>
+        <div class="am-cart-layout-two-coll-coll am-cart-layout-two-coll-coll-right">
+            <div class="am-cart-layout-two-coll-content">
+                <?php echo $right ?>
+            </div>
+        </div>
+    </div>
+    <?php else : ?>
+    <div class="am-cart-layout-one-coll">
+        <div class="am-cart-layout-one-coll-coll">
+            <div class="am-cart-layout-one-coll-content">
+    <?php
+        foreach ($products as $product)
+            include $this->_script('cart/_product.phtml');
+    ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php echo $paginator->render(); ?>
+<?php else: ?>
+    <?php __e('Products not found. Click %shere%s to continue shopping.', '<a href="' . REL_ROOT_URL . '/cart">', '</a>') ?>
+<?php endif; ?>

@@ -1,0 +1,12 @@
+<?php
+$title = $category->title;
+$this->setLayout('member/layout.phtml');
+?>
+<?php if ($category->description) : ?>
+<p><?php p($category->description) ?></p>
+<?php endif; ?>
+<?php foreach ($this->resources as $r) : ?>
+<div class="am-block">
+    <?php include $this->_script('resource/_' . $r->getAccessType() . '.phtml') ?>
+</div>
+<?php endforeach; ?>

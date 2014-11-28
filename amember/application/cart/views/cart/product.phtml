@@ -1,0 +1,16 @@
+<?php
+$title = $di->config->get('site_title');
+$meta_title = $product->getTitle() . ' : ' . $di->config->get('site_title');
+$this->setLayout('cart/layout.phtml');
+?>
+<div class="am-cart-layout-one-coll">
+    <div class="am-cart-layout-one-coll-coll">
+        <div class="am-cart-layout-one-coll-content">
+            <?php
+            $displayProductDetails = true;
+            include $this->_script('cart/_product.phtml')
+            ?>
+        </div>
+    </div>
+</div>
+<a href="<?php p($this->pUrl(null, ''));?>"><?php __e('Back to shopping') ?></a>

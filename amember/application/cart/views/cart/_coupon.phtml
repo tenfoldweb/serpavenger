@@ -1,0 +1,19 @@
+<?php if(!$isBasket) : ?>
+<form method="post" action="<?php $this->pUrl('index', 'view-basket', null) ?>">
+<?php endif;?>
+    
+<div class="am-cart-checkout-coupon">
+<?php __e("Enter Coupon Code:") ?> <input type="text" name="coupon" value="<?php p($cart->getCouponCode()) ?>" size="16"/>
+<?php if(!$isBasket) : ?>
+<input type="submit" name="do-checkout" value="<?php __e('Apply') ?>" />
+<?php endif;?>
+<?php if (!empty($coupon_error)): ?>
+    <div class="error"><?php p($coupon_error) ?></div>
+<?php endif ?>
+</div>
+<?php if(!$isBasket) : ?>
+</form>
+<?php endif; ?>
+
+    
+

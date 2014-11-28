@@ -1,0 +1,24 @@
+<form method="post" name="upgrade" action="<?php p(REL_ROOT_URL)?>/member/upgrade">
+    <?php $checked = 'checked="checked"';
+    foreach ($item->_upgrades as $upgrade):
+        $id = rand(10,999999); ?>
+        <label for="<?php echo $id?>">
+        <input type="radio" <?php echo $checked; $checked ='';?>
+               id="<?php echo $id?>" name="upgrade" value="<?php p($upgrade->product_upgrade_id) ?>" />
+            <?php
+            $product = $upgrade->getToProduct();
+            $newInvoice = $upgrade->createUpgradeInvoice($invoice, $item);
+            printf('<span class="am-product-title">%s</span> <span class="am-product-terms">%s</span> <span class="am-product-desc">%s</span>',
+                $product->getTitle(),
+                $newInvoice->getTerms(),
+                $product->getDescription(false)); ?>
+        </label>
+    <?php endforeach ?>
+    <input type="hidden" name="invoice_id" value="<?php p($invoice->public_id) ?>" />
+    <input type="hidden" name="invoice_item_id" value="<?php p($this->obfuscate($item->invoice_item_id)) ?>" />
+    <br />
+    <div>
+        <input type="submit" class="upgrade-subscription-yes" value="<?php __e('Upgrade Subscription')?>" />
+        <input type="button" class="am-popup-close upgrade-subscription-no" value="<?php __e('Cancel')?>" />
+    </div>
+</form>

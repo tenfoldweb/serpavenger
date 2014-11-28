@@ -1,0 +1,71 @@
+<div class="grid-container">
+    <table class="grid am-basket">
+        <tr>
+            <th width="1%">#</th>
+            <th class="am-basket-img"></th>
+            <th class="am-basket-title"><?php __e('Item') ?></th>
+            <th class="am-basket-price"><?php __e('Price') ?></th>
+            <th class="am-basket-qty"><?php __e('Qty') ?></th>
+            <?php if ((float)$cart->getInvoice()->first_discount) : ?>
+            <th class="am-basket-discount"><?php __e('Discount') ?></th>
+            <?php endif; ?>
+            <?php if ((float)$cart->getInvoice()->first_tax) : ?>
+            <th class="am-basket-tax"><?php __e('Tax') ?></th>
+            <?php endif; ?>
+            <th class="am-basket-total"><?php __e('Subtotal') ?></th>
+            <?php if ($isBasket): ?>
+                <th width="1%"><em><?php __e('Delete') ?></em></th>
+            <?php endif; ?>
+        </tr>
+        <?php foreach ($cart->getItems() as $item): ?>
+            <tr>
+                <td><?php echo @++$ii ?></td>
+                <td class="am-basket-img">
+                    <?php if ($item->tryLoadProduct()->img_cart_path) : ?>
+                        <img src="<?php echo REL_ROOT_URL ?>/data/public/<?php echo $item->tryLoadProduct()->img_cart_path ?>" />
+                    <?php endif; ?>
+                </td>
+                <td class="am-basket-title">
+                    <strong><?php p($item->item_title) ?></strong>
+                    <div><?php p($item->tryLoadProduct()->description) ?></div>
+                </td>
+                <td class="am-basket-price"><?php p($cart->getCurrency($item->first_price)) ?></td>
+                <td class="am-basket-qty">
+                    <?php
+                    echo ($item->is_countable && $item->variable_qty && $isBasket) ?
+                        $this->formText("qty[$item->item_id]", $item->qty, array('size' => 3)) : p($item->qty)
+                    ?></td>
+                <?php if ((float)$cart->getInvoice()->first_discount) : ?>
+                <td class="am-basket-discount"><?php p($cart->getCurrency($item->first_discount)) ?></td>
+                <?php endif; ?>
+                <?php if ((float)$cart->getInvoice()->first_tax) : ?>
+                <td class="am-basket-tax"><?php p($cart->getCurrency($item->first_tax)) ?></td>
+                <?php endif; ?>
+                <td class="am-basket-total"><?php p($cart->getCurrency($item->first_total)) ?></td>
+                <?php if ($isBasket): ?>
+                    <td class="am-basket-delete"><input type="checkbox" name="d[<?php echo $item->item_id ?>]" value="1"></td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach ?>
+        <tr class="am-basket-totals">
+            <td colspan="5"><?php __e('Total') ?></td>
+            <?php if ((float)$cart->getInvoice()->first_discount) : ?>
+            <td class="am-basket-discount"><?php p($cart->getCurrency($cart->getInvoice()->first_discount)) ?></td>
+            <?php endif; ?>
+            <?php if ((float)$cart->getInvoice()->first_tax) : ?>
+            <td class="am-basket-tax"><?php p($cart->getCurrency($cart->getInvoice()->first_tax)) ?></td>
+            <?php endif; ?>
+            <td class="am-basket-total"><?php p($cart->getCurrency($cart->getInvoice()->first_total)) ?></td>
+            <?php if ($isBasket): ?>
+                <td>&nbsp;</td>
+            <?php endif; ?>
+        </tr>
+        <?php if (!empty($cart->getInvoice()->rebill_times)): ?>
+            <tr class="am-basket-terms">
+                <td colspan="<?php echo $isBasket ? 9 : 8 ?>">
+                    <?php __e('Terms') ?>: <?php echo $cart->getInvoice()->getTerms() ?>
+                </td>
+            </tr>
+        <?php endif ?>
+    </table>
+</div>

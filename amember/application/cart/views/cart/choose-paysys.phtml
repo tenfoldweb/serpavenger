@@ -1,0 +1,30 @@
+<?php
+$title= $di->config->get('site_title') . ' : ' . ___('Choose Payment System');
+$this->setLayout('cart/layout-wide.phtml');
+$isBasket = false;
+?>
+<div class="am-cart-checkout">
+    <div>
+        <?php include $this->_script('cart/_basket.phtml'); ?>
+        <?php include $this->_script('cart/_coupon.phtml'); ?>
+        <form method="post" action="<?php $this->pUrl(null, 'choose-paysys', null) ?>">
+            <div class="am-cart-checkout-paysys">
+            <?php foreach ($paysystems as $ps): ?>
+                <div class="am-cart-checkout-paysys-item">
+                    <label for="ps-<?php p($ps->getId())?>">
+                        <input type="radio" name="paysys_id" id="ps-<?php p($ps->getId())?>" value="<?php p($ps->getId())?>" />
+                        <strong><?php echo $ps->getTitle() ?></strong>
+                        <small><?php echo $ps->getDescription() ?></small>
+                    </label>
+                </div>
+            <?php endforeach ?>
+            </div>
+            <?php echo Am_Controller::renderArrayAsInputHiddens($_REQUEST); ?>
+            <div class="am-cart-checkout-buttons">
+            <input type="submit" class="am-cart-checkout-buttons-checkout" value="<?php __e('Proceed to Checkout') ?>" />
+            <input type="button" class="am-cart-checkout-buttons-update" value="<?php __e('Edit Your Cart') ?>" onclick="window.location.href='<?php p(REL_ROOT_URL . '/cart/index/view-basket') ?>'"/>
+            <input type="hidden" name="a" value="choose-paysys" />
+            </div>
+        </form>
+    </div>
+</div>

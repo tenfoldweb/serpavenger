@@ -1,0 +1,63 @@
+<?php
+$meta_title = ___('Payments History');
+$this->layoutNoTitle = true;
+$this->setLayout('member/layout.phtml'); ?>
+<?php $this->headScript()->appendFile($this->_scriptJs('user.js')); ?>
+<div id="am-block-active-subscriptions">
+<?php if ($activeInvoices): ?>
+    <h2><?php __e('Your Active Subscriptions') ?></h2>
+    <?php foreach ($activeInvoices as $invoice): ?>
+    <?php include $this->_script('member/_invoice.phtml'); ?>
+    <?php endforeach ?>
+<?php endif ?>
+</div>
+<div id="am-block-payments">
+<?php if ($payments): ?>
+<?php
+$hasRefund = false;
+foreach ($payments as $p) $hasRefund = $hasRefund || $p->isRefunded();
+?>
+<h2><?php __e('Payments History') ?></h2>
+<div class="grid-container">
+    <table class="grid am-member-payment-history">
+        <tr>
+            <th class="am-member-payment-history-date"><?php __e('Date') ?></th>
+            <th class="am-member-payment-history-invoice_id"><?php __e('Invoice') ?></th>
+            <th class="am-member-payment-history-items"><?php __e('Products') ?></th>
+            <th class="am-member-payment-history-paysys"><?php __e('Payment System') ?></th>
+            <th class="am-member-payment-history-amouont"><?php __e('Amount') ?></th>
+            <?php if ($hasRefund) : ?>
+                <th class="am-member-payment-history-refund"><?php __e('Refunded') ?></th>
+            <?php endif; ?>
+        </tr>
+        <?php foreach ($payments as $p): ?>
+            <tr<?php if (@$i++%2) echo ' class="odd"'; ?>>
+                <td class="am-member-payment-history-date"><?php echo amDate($p->dattm)?></td>
+                <td class="am-member-payment-history-invoice_id">
+                    <?php if ($di->config->get('send_pdf_invoice') && !$p->isRefunded()): ?>
+                        <a href="<?php $this->pUrl('member', 'get-invoice', 'default', 'id', $this->obfuscate($p->pk()))?>"><?php p($p->getInvoice()->public_id) ?></a>
+                    <?php else: ?>
+                        <?php p($p->getInvoice()->public_id) ?>
+                    <?php endif; ?>
+                </td>
+                <td class="am-member-payment-history-items"><?php
+                    $products = $p->getInvoice()->getProducts();
+                    echo join(', ',  array_map(create_function('$p', 'return $p->title;'), $products));
+                    ?>
+                </td>
+                <td class="am-member-payment-history-paysys"><?php p($p->_paysysName) ?></td>
+                <td class="am-member-payment-history-amouont"><?php p($p->getCurrency($p->amount)) ?></td>
+                <?php if ($hasRefund) : ?>
+                    <td class="am-member-payment-history-refund"><?php if ($p->isRefunded()) p(amDate($p->refund_dattm)); ?></td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach ?>
+    </table>
+</div>
+<?php else: // if ($payments):?>
+    <?php __e('There are no confirmed payments for your account'); ?>
+<?php endif // if ($payments): ?>
+</div>
+<div class="cancel-subscription-popup" data-popup-title="<?php __e('Cancel Subscription')?>" style="display:none">
+    <?php include $this->_script('member/_cancel.phtml') ?>
+</div>

@@ -1,0 +1,503 @@
+@charset "utf-8";
+/* CSS Document */
+
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+
+  max-width: 100%;
+  /* Part 1: Set a maxium relative to the parent */
+
+  width: auto\9;
+  /* IE7-8 need help adjusting responsive images */
+
+  height: auto;
+  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+  /* Colors, Text Selection Color
+================================================== */
+::-webkit-input-placeholder {
+	color: #29af61;
+}
+:-moz-placeholder {
+	color: #29af61;
+}
+::-moz-focus-inner {
+	border: 0;
+}
+.placeholder {
+	color: #29af61;
+}
+a {
+	color: #ed6b00;
+	text-decoration: none;
+	outline: none;
+	cursor:pointer
+}
+a:hover {
+	text-decoration: none;
+}
+a:active, a:focus {
+	outline: none;
+}
+ul{ list-style-type:none; padding:0; margin:0}
+.mgr-left{ margin-left:10px}
+.font11{font-size:11px}
+
+h1{ color:#163d6d; font-size:14px; margin:0; padding:0; text-transform:uppercase}
+
+input[type="text"]{
+	background-color: #fff;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+	border:1px solid #dddddd;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	padding:5px 0;
+	text-indent:10px
+	}
+input[type="button"]{
+	background:#30619b url(../images/input-btn-bg.png) repeat-x bottom center;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	padding:5px 10px;
+	color:#fff;
+	border:0 none;
+	text-transform:uppercase;
+	font-size:14px
+	}
+input[type="button"]:hover{	
+	background:linear-gradient(to bottom, #e57b1c 5%, #c96b17 100%) repeat scroll 0 0 #e57b1c;
+   }
+
+/* Selection Colors
+================================================== */
+::-moz-selection {
+	color: #ffffff;
+	background: #29af61;
+}
+::selection {
+	color: #ffffff;
+	background: #29af61;
+}
+
+
+body{
+  width: 100%;
+  font: 13px 'Open Sans', Arial, Helvetica, sans-serif;
+  color:#010101
+}
+
+.container{ width:1251px}
+
+.nopadding{ padding: 0; }
+
+
+
+  /* header top right usersec
+================================================== */
+#header{ margin-bottom: 6px;margin-top: 15px;}
+.user-title{ font-size:14px; color:#777777; float:right}
+.user-title button{ border:0}
+.user-title button, .user-title button span.caret{color:#777777}
+.user-title button span{ font-size:15px; color:#246ac1}
+
+/* ==Dropdowns */
+/* ----------------------------------------------- */
+.dropdown-menu {
+  min-width: 185px;
+}
+.dropdown-menu > li {
+  margin-right: .5em;
+  margin-left: .5em;
+}
+.dropdown-menu > li > a {
+  padding: 6px 7px;
+  font-size: 13px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.dropdown-header {
+  padding: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #fff;
+  background-color: #ee7f02;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #444;
+  background-color: #dadada;
+}
+
+
+/* headers
+---------------------------------*/
+.menusec {
+    margin: 0;
+    padding: 0;
+}
+.mainmenu{
+	clear: right;
+    float: right;
+    margin: 2px 0 0;
+	background:url(../images/menubg.gif) repeat-x
+	}
+nav.mainmenu ul {
+    list-style: none outside none;
+    margin: 0;
+	padding:0
+}	
+
+.mainmenu > ul > li {
+    border-left: medium none;
+    float: left;
+    height: 45px;
+    margin: 0;
+    position: relative;
+}
+
+.mainmenu > ul > li.parent > a:after {
+    bottom: 0;
+    content: " ";
+    display: block;
+    height: 5px;
+    left: 50%;
+    margin-left: -4px;
+    position: absolute;
+    width: 9px;
+    z-index: 50;
+}
+
+.mainmenu > ul > li.current-menu-item > a {
+    background: none repeat scroll 0 0 #287dc6;
+    color: #FFFFFF;
+}
+
+
+.mainmenu > ul > li {
+    border-left: medium none;
+    float: left;
+    height: 45px;
+    margin: 0;
+    position: relative;
+}
+
+
+.mainmenu > ul > li.parent > a:after {
+    bottom: 0;
+    content: " ";
+    display: block;
+    height: 5px;
+    left: 50%;
+    margin-left: -4px;
+    position: absolute;
+    width: 9px;
+    z-index: 50;
+}
+.mainmenu > ul > li > a {
+    border-left: medium none;
+    color: #fff;
+    float: left;
+    font-size:14px;
+    height: 45px;
+    padding: 0 21px;
+    transition: color 0.25s ease 0s, background 0.25s ease 0s, border-bottom 0.25s ease 0s;
+	line-height:45px
+}
+.mainmenu > ul > li > a:hover{ background:#287DC6}
+
+
+.mainmenu>ul>li>ul {font-size: 0.923em;}
+.mainmenu>ul ul {display: none; position: absolute; left: 0; top: 100%; width: 150px; margin: 0; padding: 10px 0 10px; background: #fff; box-shadow: 1px 1px 4px rgba(0,0,0,0.5); font-weight: 400; font-family: "Arial",sans-serif;}
+.mainmenu>ul>li>ul {width: 149px; font-size: 1.091em; z-index:999}
+.mainmenu>ul>li>ul ul {font-size: 1em;}
+.mainmenu ul ul li {display: block; float: none; position: relative; margin: 0;}
+.mainmenu ul ul li.parent>a {background: url("images/sm-arrow.png") 100% 50% no-repeat;}
+.mainmenu ul ul li a {display: block; padding: 4px 15px 4px 14px; color: #3f3f3f;}
+.mainmenu ul ul li a:hover, header nav ul ul li:hover>a {background-color: #EE7F02; color: #fff;}
+.mainmenu ul ul>li.current-menu-item>a {background-color: #ebebeb; color: #3f3f3f;}
+.mainmenu ul ul ul {display: none; position: absolute; left: 100%; top: -10px; font-size: 1em;}
+.mainmenu li:hover>ul {display: block;}
+
+.mainmenu>ul>li.right>ul {left: auto; right: 0;}
+.mainmenu>ul>li.right ul ul {left: auto; right: 100%;}
+
+nav.mainmenu>ul>li.parent>a:after {display: block; position: absolute; left: 50%; bottom: 0; z-index: 50; width: 9px; height: 5px; margin-left: -4px; content: " ";}
+
+
+.slicknav_menu {
+	display:none;
+}
+/*
+    Mobile Menu Core Style
+*/
+
+.slicknav_btn { position: relative; display: block; vertical-align: middle; float: right; padding: 0.438em 0.625em 0.438em 0.625em; line-height: 1.125em; cursor: pointer; }
+.slicknav_menu  .slicknav_menutxt { display: block; line-height: 1.188em; float: left; }
+.slicknav_menu .slicknav_icon { float: left; margin: 0.188em 0 0 0.438em; }
+.slicknav_menu .slicknav_no-text { margin: 0 }
+.slicknav_menu .slicknav_icon-bar { display: block; width: 1.125em; height: 0.125em; -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+.slicknav_btn .slicknav_icon-bar + .slicknav_icon-bar { margin-top: 0.188em }
+.slicknav_nav { clear: both }
+.slicknav_nav ul,
+.slicknav_nav li { display: block }
+.slicknav_nav .slicknav_arrow { font-size: 0.8em; margin: 0 0 0 0.4em; }
+.slicknav_nav .slicknav_item { display: block; cursor: pointer; }
+.slicknav_nav a { display: block }
+.slicknav_nav .slicknav_item a { display: inline }
+.slicknav_menu:before,
+.slicknav_menu:after { content: " "; display: table; }
+.slicknav_menu:after { clear: both }
+/* IE6/7 support */
+.slicknav_menu { *zoom: 1 }
+
+/* 
+    User Default Style
+    Change the following styles to modify the appearance of the menu.
+*/
+
+.slicknav_menu {
+	font-size:16px;
+}
+/* Button */
+.slicknav_btn {
+	margin: 5px 5px 6px;	
+	text-decoration:none;	
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;  
+	background-color: #222222;
+}
+/* Button Text */
+.slicknav_menu  .slicknav_menutxt {	
+	color: #FFF;
+	font-weight: bold;	
+	text-shadow: 0 1px 3px #000;	
+}
+/* Button Lines */
+.slicknav_menu .slicknav_icon-bar {
+  background-color: #f5f5f5;
+}
+.slicknav_menu {
+	background:#264e80 url("../images/menubg.gif") repeat-x scroll 0 0;
+	padding:5px;
+}
+.slicknav_nav {
+	color:#fff;
+	margin:0;	
+	padding:0;
+	font-size:0.875em;
+}
+.slicknav_nav, .slicknav_nav ul {
+	list-style: none;
+	overflow:hidden;
+}
+.slicknav_nav ul {
+	padding:0;
+	margin:0 0 0 20px;
+}
+.slicknav_nav .slicknav_item {
+	padding:5px 10px;
+	margin:2px 5px;
+}
+.slicknav_nav a{
+	padding:5px 10px;
+	margin:2px 5px;
+	text-decoration:none;
+	color:#fff;
+}
+.slicknav_nav .slicknav_item a {
+	padding:0;
+	margin:0;
+}
+.slicknav_nav .slicknav_item:hover {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background:#ee7f02;
+	color:#fff;	
+}
+.slicknav_nav a:hover{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background:#ee7f02;
+	color:#fff;
+}
+.slicknav_nav .slicknav_txtnode {
+     margin-left:15px;   
+}
+
+/* Checkbox*/
+/*general styles for all CSS Checkboxes*/
+.domainsrc{ border-right:1px solid #eaeaea}
+.top-pannel{ background:url(../images/top-pannelbg.png) repeat-x top center; padding:15px 0;}
+
+label {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+input[type=checkbox].css-checkbox {
+	  position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input.css-checkbox[type="checkbox"] + label.css-label {
+    background-position:-130px -129px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    height: 15px;
+    line-height: 15px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: -130px -95px;
+}
+
+.css-label{
+	background-image:url(http://csscheckbox.com/checkboxes/dark-check-green.png);
+	color: #163D6D;
+    font-size: 12px !important;
+    font-weight: normal;
+	font-family:Arial, Helvetica, sans-serif
+}
+
+.lite-gray-check, .netwrkset, .renualdate{background:url(../images/spirit.png) no-repeat}
+
+
+.chkbx{ margin:12px 0}
+
+/*input.smsrc[type="text"]{ width:77%}*/
+ul.networkinfo{ font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#163d6d; margin:20px 0}
+ul.networkinfo li{ display:inline-block; width:19%}
+ul.networkinfo li span i{ background:url(../images/spirit.png) no-repeat;  display:inline-block; width:12px; height:12px; margin-right:5px}
+
+ul.networkinfo li a{ text-decoration:underline; cursor:pointer; margin-top:5px; display:block}
+
+ul.networkinfo li span i.manager{ background-position:0 -5px;}
+ul.networkinfo li span i.networks{ background-position:0 -37px; }
+
+ul.networkinfo li span i.domains{ background-position:0 -73px; }
+ul.networkinfo li span i.posts{ background-position:-1px -104px; }
+ul.networkinfo li span i.links{ background-position:0 -136px; }
+.netbtm{ font-size:11px; font-family:Arial, Helvetica, sans-serif}
+.netbtm a.netwrkset{ 
+	background-position: -322px -4px;
+    color: #3971B5;
+    height: 22px;
+    padding-left: 20px;
+    text-decoration: underline;
+}
+.netbtm a.netwrkset:hover{ color:#ED6B00}
+
+.renualdate{ background-position: -321px -40px;
+    height: 21px;
+    padding-left: 25px;
+	line-height:21px;
+	color:#8e8e8e
+	}
+.custom-gategory{border-left:1px solid #EAEAEA}
+.colorplate{color:#285185; font-size:13px; width:54%; float:left}
+.colorplate li{margin:0 0 10px 0}
+.colorplate li span{ display:inline-block; width:11px; height:11px; border-radius:2px; margin-right:5px}
+.colorplate li span.yellow{background:#fbb52f; }
+.colorplate li span.light-blue{background:#6f98ae; }
+.colorplate li span.dark-blue{background:#00275e; }
+.colorplate li span.green{background:#87ae00; }
+.colorcirle{ width:46%; text-align:center}
+
+
+.btn-grey{ background:#f5f5f5 url(../images/grey-btn-bg.png) repeat-x top center; font-size:13px; font-family:Arial, Helvetica, sans-serif; border:1px solid #dddddd; padding:6px 4px}
+.darkgrey{ background:#eaeaea url(../images/dark-gery-btn.png) repeat-x; font-size:13px;  padding:6px 4px}
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td{ background:#f0f0f0 url(../images/tr-bg.png) repeat-x; color:#666666; font-size:13px; font-weight:normal}
+.table-scroll{ max-height:642px}
+
+button.btn-yellow {
+	border:1px solid #dddddd; background:#fff; color:#666666;  box-shadow:none;
+   border-radius:3px;
+   cursor:pointer;
+   font-size:11px; font-family:Arial, Helvetica, sans-serif;
+  width:38px;
+  height:25px
+}
+
+button.btn-yellow:hover{ background:linear-gradient(to bottom, #e57b1c 5%, #e57b1c 100%) repeat scroll 0 0 #e57b1c;
+   border:1px solid #bf6515;box-shadow:0 1px 0 0 #ea9447 inset; color:#fff;}
+
+button.btn-playpause{
+	border-radius:3px;
+   cursor:pointer;
+   font-size:11px; font-family:Arial, Helvetica, sans-serif;
+  width:38px;
+  height:26px;
+  border:1px solid #dddddd; background:#fff; color:#666666;
+	}
+	
+button.btn-playpause:hover{
+	
+	 background:linear-gradient(to bottom, #2168a6 5%, #2168a6 100%) repeat scroll 0 0 #2168a6;
+   border:0 none;
+   border-radius:3px;
+   box-shadow:0 1px 0 0 #4b84b7 inset;
+   color:#fff;}
+   
+.pagination-row{ background:#e6e6e6; font-size:13px; color:#333333; border-bottom:1px solid #c0c0c0; border-right:1px solid #c0c0c0; border-left:1px solid #c0c0c0; padding:10px}
+.pagination-row span.previous, .pagination-row span.next-btn{ display:block; float:left; border:1px solid #dddddd; background:#fff; padding:0px 8px; border-radius:5px; cursor:pointer; margin-right:5px}
+.pagination{margin:0}
+.pagination-row span.previous i, .pagination-row span.next-btn i{color:#666666; font-size:24px}
+.pagination-row span.previous i:hover, .pagination-row span.next-btn i:hover{ color:#ED6B00}
+.pagination-row input{ width:40px}
+.table-scroll table{ margin-bottom:0}
+
+.table-scroll table tr.blue-stripe{ background:url(../images/blue-stripe-bg.gif) repeat}
+.table-scroll table tr.yellow-stripe{ background:#fcfce7}
+.table-scroll table tr.red-stripe{ background:#f9eae0}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{ background:none}
+.btn-group.open .dropdown-toggle{ box-shadow:none}
+.dropdown-menu{ margin:1px 0 0}
+.pull-right > .dropdown-menu{ text-align:left}
+
+

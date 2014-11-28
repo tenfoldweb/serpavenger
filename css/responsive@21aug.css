@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media screen and (min-width: 2000px) {
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	.mainmenu > ul > li > a{padding:0 8px}
+   
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	/*.user-title{position: absolute;
+    right: 0;
+    top: -59px;
+	}*/
+	.mainmenu > ul > li > a:not(*:root){ padding:0 7px}
+	.slicknav_nav .slicknav_item a i {
+    display: none;
+	}	
+	#network-overview {
+    float: left;
+    padding: 0 0 0 22px;
+    width: 396px;
+	}	
+	.custom-gategory{ border-left:0; padding-left:0; margin-top:20px}
+	ul.networkinfo li{ width:122px; margin-bottom:10px}
+	ul.networkinfo{ margin-bottom:0}
+}
+
+@media screen and (max-width: 900px) {
+	.js #menu {
+		display:none;
+	}
+	
+	.js .slicknav_menu {
+		display:block;
+	}
+}
+@media screen and (max-width: 480px) {
+	.js #menu {
+		display:none;
+	}
+	
+	.js .slicknav_menu {
+		display:block;
+	}
+	
+	.slicknav_nav .slicknav_item a i{ display:none}
+	.domainsrc {
+		border-bottom: 1px solid #EAEAEA;
+		border-right: medium none;
+		margin: 0 0 20px;
+		padding-bottom: 20px;
+		width:100%;
+		padding-right:0
+	}
+	ul.networkinfo li {
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 49%;
+	}
+	/*input.smsrc[type="text"]{ width:71%}*/
+	.menusec{ text-align:center}
+	.user-title{ float:none !important}
+	#logo{ text-align:center}
+	.table-responsive{ overflow-y:scroll; margin:0}
+	.pdglr{padding-left: 15px;
+    padding-right: 15px;}
+	.btn-grey{ width:auto}
+	input.smsrc[type="text"]{ width:71%}
+	#network-overview{ width:100%; padding:0}
+	ul.networkinfo li{ padding:5px; border:1px solid #f5f5f5; margin-bottom:3px}
+	ul.networkinfo li:hover{ background:#f5f5f5;}
+	.custom-gategory{ padding-left:0; border:0; margin-top:25px}
+	.renualdate{ float:left !important}
+	#logo{ margin-bottom:15px}
+	.default-net ul li{float:left; width:100%;}
+	.left-col{ width:auto}
+.right-col{ width:auto}
+	.seo-snapshot-box, .one-page-ranking, .serp-profile, .serp-profile-box{ width:100%}
+	.serp-profile-box{ border-right:0 none; border-bottom:1px solid #f5f5f5; padding-bottom:15px; margin-bottom:15px}
+
+}
+

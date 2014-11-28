@@ -1,0 +1,9 @@
+<?php $title = ___('Payment Failed'); $this->setLayout('layout.phtml'); ?>
+<?php include $this->_script('_error.phtml'); ?>
+<ul class="errors">
+    <li><?php __e('An error occurred while handling your payment.') ?></li>
+</ul>
+<h2><?php __e('Choose another payment processor and try again') ?></h2>
+<?php echo $form; ?>
+
+

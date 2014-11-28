@@ -1,0 +1,74 @@
+[29-Aug-2014 03:20:02 America/New_York] PHP Fatal error:  Call to a member function flashdata() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/views/_login.phtml on line 1
+[29-Aug-2014 03:20:02 America/New_York] PHP Fatal error:  Call to a member function flashdata() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/views/_login.phtml on line 1
+[29-Aug-2014 03:21:53 America/New_York] PHP Fatal error:  Call to a member function flashdata() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/views/_login.phtml on line 1
+[29-Aug-2014 03:25:01 America/New_York] PHP Fatal error:  Call to a member function flashdata() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/views/_login.phtml on line 1
+[04-Sep-2014 02:20:22 America/New_York] PHP Fatal error:  Call to undefined function redirect() in /home/serpaven/public_html/serp_avenger/amember/application/configs/site.php on line 10
+[04-Sep-2014 02:48:56 America/New_York] PHP Fatal error:  Call to undefined function redirect() in /home/serpaven/public_html/serp_avenger/amember/application/configs/site.php on line 10
+[04-Sep-2014 08:45:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 08:45:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 08:45:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 08:50:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 08:50:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 08:55:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:00:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:00:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:00:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:00:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:00:05 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:05:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:10:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:10:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:15:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:15:02 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:20:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:20:01 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:20:34 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:39 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:40 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:41 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:41 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:41 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:41 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:42 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:42 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:42 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:21:42 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[04-Sep-2014 09:22:15 America/New_York] PHP Fatal error:  Call to a member function pk() on a non-object in /home/serpaven/public_html/serp_avenger/amember/application/default/models/ResourceAccess.php on line 158
+[08-Sep-2014 07:16:48 America/New_York] PHP Fatal error:  Uncaught exception 'Am_Exception_Db' with message 'MySQL server has gone away at /home/serpaven/public_html/serp_avenger/amember/library/Am/Session/SaveHandler.php line 77(2006) in query: REPLACE INTO am_session SET `id`='4ffe848a373b1662911032f59785bfb7', `modified`='1410175008', `lifetime`='7200', `user_id`=NULL, `data`=''' in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php:1127
+Stack trace:
+#0 [internal function]: Am_Db::defaultDatabaseErrorHandler('MySQL server ha...', Array)
+#1 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1356): call_user_func(Array, 'MySQL server ha...', Array)
+#2 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(973): DbSimple_Generic_LastError->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#3 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1593): DbSimple_Generic_Database->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#4 /home/serpaven/public_h in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php on line 1127
+[08-Sep-2014 07:36:27 America/New_York] PHP Fatal error:  Uncaught exception 'Am_Exception_Db' with message 'MySQL server has gone away at /home/serpaven/public_html/serp_avenger/amember/library/Am/Session/SaveHandler.php line 77(2006) in query: REPLACE INTO am_session SET `id`='4c1e577d3abe7d8b3e360adfb6e0f298', `modified`='1410176186', `lifetime`='7200', `user_id`=NULL, `data`='__ZF|a:1:{s:12:\"amember_auth\";a:1:{s:3:\"ENT\";i:1410183251;}}amember_auth|a:2:{s:4:\"user\";N;s:16:\"login_attempt_id\";N;}'' in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php:1127
+Stack trace:
+#0 [internal function]: Am_Db::defaultDatabaseErrorHandler('MySQL server ha...', Array)
+#1 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1356): call_user_func(Array, 'MySQL server ha...', Array)
+#2 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(973): DbSimple_Generic_LastError->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#3 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.ph in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php on line 1127
+[08-Sep-2014 07:36:27 America/New_York] PHP Fatal error:  Uncaught exception 'Am_Exception_Db' with message 'MySQL server has gone away at /home/serpaven/public_html/serp_avenger/amember/library/Am/Session/SaveHandler.php line 77(2006) in query: REPLACE INTO am_session SET `id`='4c1e577d3abe7d8b3e360adfb6e0f298', `modified`='1410176185', `lifetime`='7200', `user_id`=NULL, `data`='__ZF|a:1:{s:12:\"amember_auth\";a:1:{s:3:\"ENT\";i:1410183251;}}amember_auth|a:2:{s:4:\"user\";N;s:16:\"login_attempt_id\";N;}'' in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php:1127
+Stack trace:
+#0 [internal function]: Am_Db::defaultDatabaseErrorHandler('MySQL server ha...', Array)
+#1 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1356): call_user_func(Array, 'MySQL server ha...', Array)
+#2 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(973): DbSimple_Generic_LastError->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#3 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.ph in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php on line 1127
+[08-Sep-2014 07:36:31 America/New_York] PHP Fatal error:  Uncaught exception 'Am_Exception_Db' with message 'MySQL server has gone away at /home/serpaven/public_html/serp_avenger/amember/library/Am/Session/SaveHandler.php line 77(2006) in query: REPLACE INTO am_session SET `id`='4c1e577d3abe7d8b3e360adfb6e0f298', `modified`='1410176191', `lifetime`='7200', `user_id`=NULL, `data`='__ZF|a:1:{s:12:\"amember_auth\";a:1:{s:3:\"ENT\";i:1410183251;}}amember_auth|a:2:{s:4:\"user\";N;s:16:\"login_attempt_id\";N;}'' in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php:1127
+Stack trace:
+#0 [internal function]: Am_Db::defaultDatabaseErrorHandler('MySQL server ha...', Array)
+#1 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1356): call_user_func(Array, 'MySQL server ha...', Array)
+#2 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(973): DbSimple_Generic_LastError->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#3 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.ph in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php on line 1127
+[08-Sep-2014 07:37:38 America/New_York] PHP Fatal error:  Uncaught exception 'Am_Exception_Db' with message 'MySQL server has gone away at /home/serpaven/public_html/serp_avenger/amember/library/Am/Session/SaveHandler.php line 77(2006) in query: REPLACE INTO am_session SET `id`='dc677d0d082459c52e023690524e9113', `modified`='1410176258', `lifetime`='7200', `user_id`=NULL, `data`='__ZF|a:1:{s:12:\"amember_auth\";a:1:{s:3:\"ENT\";i:1410182966;}}amember_auth|a:1:{s:4:\"user\";N;}'' in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php:1127
+Stack trace:
+#0 [internal function]: Am_Db::defaultDatabaseErrorHandler('MySQL server ha...', Array)
+#1 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1356): call_user_func(Array, 'MySQL server ha...', Array)
+#2 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(973): DbSimple_Generic_LastError->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#3 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1593): DbSimple_Generic_Da in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php on line 1127
+[08-Sep-2014 07:37:45 America/New_York] PHP Fatal error:  Uncaught exception 'Am_Exception_Db' with message 'MySQL server has gone away at /home/serpaven/public_html/serp_avenger/amember/library/Am/Session/SaveHandler.php line 77(2006) in query: REPLACE INTO am_session SET `id`='4c1e577d3abe7d8b3e360adfb6e0f298', `modified`='1410176258', `lifetime`='7200', `user_id`=NULL, `data`='__ZF|a:1:{s:12:\"amember_auth\";a:1:{s:3:\"ENT\";i:1410182987;}}amember_auth|a:1:{s:4:\"user\";N;}'' in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php:1127
+Stack trace:
+#0 [internal function]: Am_Db::defaultDatabaseErrorHandler('MySQL server ha...', Array)
+#1 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1356): call_user_func(Array, 'MySQL server ha...', Array)
+#2 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(973): DbSimple_Generic_LastError->_setLastError(2006, 'MySQL server ha...', 'REPLACE INTO am...')
+#3 /home/serpaven/public_html/serp_avenger/amember/library/DbSimple/Generic.php(1593): DbSimple_Generic_Da in /home/serpaven/public_html/serp_avenger/amember/library/Am/App.php on line 1127
+[16-Sep-2014 03:51:10 America/New_York] PHP Parse error:  syntax error, unexpected $end in /home/serpaven/public_html/serp_avenger/amember/application/default/views/_login.phtml on line 145

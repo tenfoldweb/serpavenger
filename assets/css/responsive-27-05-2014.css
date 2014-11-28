@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media screen and (min-width: 2000px) {
+}
+
+
+@media screen and (max-width: 1400px) {
+   
+}
+
+@media screen and (max-width: 900px) {
+	.js #menu {
+		display:none;
+	}
+	
+	.js .slicknav_menu {
+		display:block;
+	}
+}
+@media screen and (max-width: 768px) {
+	.js #menu {
+		display:none;
+	}
+	
+	.js .slicknav_menu {
+		display:block;
+	}
+	
+	.slicknav_nav .slicknav_item a i{ display:none}
+	.domainsrc {
+    border-right: none;
+    margin: 0 0 20px;
+	}
+	ul.networkinfo li {
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 49%;
+	}
+	input.smsrc[type="text"]{ width:71%}
+	.menusec{ text-align:center}
+	.user-title{ float:none !important}
+	#logo{ text-align:center}
+	.table-responsive{ overflow-y:scroll}
+	.pdglr{padding-left: 15px;
+    padding-right: 15px;}
+
+}
+

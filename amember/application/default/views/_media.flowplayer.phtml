@@ -1,0 +1,56 @@
+<?php
+    $scriptId = "am-$type-" . filterId($this->id);
+    $divId = "div-".$scriptId;
+    $rootUrl = $isSecure ? ROOT_SURL : ROOT_URL;
+    $flowPlayerJs = $rootUrl . "/application/default/views/public/js/flowplayer/flowplayer.js";
+    $flowPlayerIpadJs = $rootUrl . "/application/default/views/public/js/flowplayer/flowplayer.ipad.js";
+    $flowPlayerSwf = $rootUrl . "/application/default/views/public/js/flowplayer/flowplayer.swf";
+?>
+<?php if (!empty($media)) : // user has access to media ?>
+jQuery(document).ready(function($) {
+    var runMedia = function()
+    {
+<?php
+/**
+ * Flowplayer (flash): flv (video/x-flv), mp4 (video/mp4), f4v (video/x-f4v)
+ * Safari: H.264 (video/mp4)
+ * Chrome: Theora (video/ogg), H.264 (video/mp4), VP8 (video/webm)
+ * IE: H.264 (video/mp4)
+ * Firefox: Theora (video/ogg), H.264 (video/mp4), VP8 (video/webm)
+ * Opera: Theora (video/ogg), VP8 (video/webm)
+ */
+?>
+        var video_support = !!(document.createElement('video').canPlayType);
+        var video = document.createElement('video');
+        var idevice = /ip(hone|ad|od)/i.test(navigator.userAgent);
+        var noflash = flashembed.getVersion()[0] === 0;
+        var simulate = !idevice && noflash && video_support && !!(video.canPlayType('<?php echo $mime ?>').replace(/no/, ''));
+        var $a = $('<a id="<?php p($divId) ?>" class="am-video"><?php if ($this->poster) { echo '<div class="am-video-poster-icon"></div><div class="am-video-poster"><img src="' . $this->escape($this->poster) . '" alt="" /></div>'; } ?></a>');
+        $a.attr("href","<?php p($media) ?>");
+        $a.css({
+            width : '<?php p($width)?>',
+            height : '<?php p($height)?>',
+            display: 'inline-block'
+        });
+        $("script#<?php echo $scriptId ?>").after($a);
+        $a.wrap('<div class="am-video-wrapper"></div>')
+        flowplayer('<?php p($divId) ?>', {src: '<?php p($flowPlayerSwf) ?>', wmode: 'opaque'}, <?php echo (empty($playerParams) ? '{}' : json_encode($playerParams)) ?>).ipad({validExtensions : null, simulateiDevice : simulate});
+    }
+    // if !flowplayer loaded, load it in async mode
+    if (typeof flowplayer == 'function')
+    {
+        runMedia();
+    } else {
+        jQuery.getScript('<?php p($flowPlayerJs)?>', function(){
+            jQuery.getScript('<?php p($flowPlayerIpadJs)?>', runMedia)
+        });
+    }
+});
+<?php else: // no media ?>
+jQuery(document).ready(function($) {
+    var $a = $('<a id="<?php p($divId)?>" class="am-video-no-access"></a>');
+    $a.attr("href",<?php echo json_encode($link);?>);
+    $a.text('<?php j($error) ?>');
+    $("script#<?php echo $scriptId ?>").after($a);
+});
+<?php endif; ?>

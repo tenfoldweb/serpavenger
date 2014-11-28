@@ -1,0 +1,80 @@
+<?php if ($strategy->isMessageAvalable($message)) : ?>
+<div class="am-helpdesk-message <?php
+    if ($message->type=='comment') {
+        echo 'am-helpdesk-message-comment';
+    } elseif ($strategy->isMessageForReply($message)) {
+        echo 'am-helpdesk-message-with-reply';
+    } else {
+        echo 'am-helpdesk-message-without-reply';
+    }
+?>" id="helpdesk-message-<?php echo $this->obfuscate($message->message_id) ?>">
+    <div class="am-helpdesk-message-header">
+        <div class="am-helpdesk-message-action-fold">
+            [<a href="javascript:;" title="<?php __e('Close') ?>">&minus;</a>]
+        </div>
+        <?php if ($di->modules->get('helpdesk')->getConfig('show_gravatar')) :?>
+        <div class="am-helpdesk-message-author-avatar">
+            <?php
+            if ($message->admin_id) {
+               echo $strategy->getAdminGravatar($message);
+            } else {
+               echo $strategy->getUserGravatar($message);
+            }
+            ?>
+        </div>
+        <?php endif; ?>
+        <span class="am-helpdesk-message-author">
+            <?php
+            if ($message->admin_id) {
+                p($strategy->getAdminName($message));
+            } else {
+                p($strategy->getUserName($message));
+            }
+            ?></span>,
+        <time
+            class="am-helpdesk-message-date"
+            title="<?php p(amDatetime($message->dattm)) ?>"
+            datetime="<?php p(date('c', amstrtotime($message->dattm))) ?>"
+        ><?php p($this->getElapsedTime($message->dattm)) ?></time>
+    </div>
+    <div class="am-helpdesk-message-content">
+        <pre><?php echo $this->hyperlinks($this->skip($message->content)) ?></pre>
+        <div class="am-helpdesk-message-attachments">
+        <?php foreach ($message->loadGetAttachments() as $upload) : ?>
+        &ndash; <a class="link" href="<?php p($strategy->assembleUrl(array(
+                'page_id' => 'view',
+                'action' => 'file',
+                'message_id' => $this->obfuscate($message->message_id),
+                'id' => $this->obfuscate($upload->upload_id)
+            ), 'inside-pages')) ?>" target="_blank"><?php p($upload->name) ?></a> (<?php p($upload->getSizeReadable()) ?>)<br />
+        <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="am-helpdesk-message-actions">
+        <?php if ($message->type == 'comment') : ?>
+        <div class="am-helpdesk-message-action am-helpdesk-message-action-reply">
+            <a class="local" href="<?php
+            echo $di->helpdeskStrategy->assembleUrl(array(
+                'page_id' => 'view',
+                'action' => 'reply',
+                'message_id' => $this->obfuscate($message->message_id),
+                'ticket' => $ticket->ticket_mask,
+                'type' => 'comment'
+            ), 'inside-pages') ?>"><?php __e('Edit') ?></a>
+        </div>
+        <?php elseif ($strategy->isMessageForReply($message) && $strategy->canEditTicket($ticket)) : ?>
+        <div class="am-helpdesk-message-action am-helpdesk-message-action-reply">
+            <a class="local" href="<?php
+            echo $di->helpdeskStrategy->assembleUrl(array(
+                'page_id' => 'view',
+                'action' => 'reply',
+                'message_id' => $this->obfuscate($message->message_id),
+                'ticket' => $ticket->ticket_mask,
+                'type' => 'message'
+            ), 'inside-pages') ?>"><?php __e('Reply') ?></a>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php include $this->_script($strategy->getTemplatePath() . '/_reply-panel.phtml'); ?>
+</div>
+<?php endif; ?>

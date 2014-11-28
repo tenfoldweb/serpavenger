@@ -1,0 +1,34 @@
+<h2><?php __e('Affiliate link with Custom Landing Page') ?></h2>
+<div class="am-aff-banner-preview">
+
+<div class="custom_redirect">
+    <div style="padding-bottom:0.5em;">
+        <div><?php __e('Please Enter URL of Your Landing Page')?></div>
+        <div style='display: table-cell;' class='el-wide'><input type="text" name="url" id="custom_redirect_url" placeholder="http://example.com/page.html" class='el-wide'/></div>
+        <div style='display: table-cell;'><input type="button" value="<?php __e('Get Link') ?>" id="custom_redirect-ok" /></div>
+    </div>
+    <div id="custom_redirect_div" style="display:none; padding-bottom:0.5em;">
+        <label><?php __e('Your Custom Affiliate Link')?></label>
+        <input type="text" name="link" id="custom_redirect_link" class='el-wide'/>
+    </div>
+</div>
+<script type="text/javascript">
+jQuery(function($){
+    $('#custom_redirect-ok').click(function(){
+        var url = "<?php j((empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') ? ROOT_URL : ROOT_SURL) ?>" + "/aff/aff/clink";
+        $.ajax({
+            type: 'POST'
+            ,url: url
+            ,data : {
+                url : $("#custom_redirect_url").val()
+            }
+            ,success: function(data, textStatus, request)
+            {
+                $("#custom_redirect_div").show();
+                $("#custom_redirect_link").val(data['link']);
+            }
+        });
+    })
+});
+</script>
+</div>

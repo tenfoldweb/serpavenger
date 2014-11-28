@@ -1,0 +1,5 @@
+[17-Sep-2014 10:28:50 America/New_York] PHP Fatal error:  Using $this when not in object context in /home/serpaven/public_html/serp_avenger/serpcrawlers/crawlers.php on line 2
+[17-Sep-2014 10:28:58 America/New_York] PHP Fatal error:  Using $this when not in object context in /home/serpaven/public_html/serp_avenger/serpcrawlers/crawlers.php on line 2
+[17-Sep-2014 10:29:24 America/New_York] PHP Fatal error:  Using $this when not in object context in /home/serpaven/public_html/serp_avenger/serpcrawlers/crawlers.php on line 2
+[17-Sep-2014 10:35:25 America/New_York] PHP Parse error:  syntax error, unexpected T_ECHO, expecting ',' or ';' in /home/serpaven/public_html/serp_avenger/serpcrawlers/crawlers.php on line 80
+[17-Sep-2014 10:35:28 America/New_York] PHP Parse error:  syntax error, unexpected T_ECHO, expecting ',' or ';' in /home/serpaven/public_html/serp_avenger/serpcrawlers/crawlers.php on line 80

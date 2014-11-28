@@ -1,0 +1,25 @@
+<?php
+$title = $di->config->get('site_title') . ' : ' . ___('Your Basket');
+$this->setLayout('cart/layout-wide.phtml');
+$isBasket = true;
+?>
+<div class="am-cart-checkout">
+    <div>
+        <?php if (count($cart->getItems())) : ?>
+        <form action="<?php $this->pUrl('index', 'view-basket') ?>" method="post">
+            <?php include $this->_script('cart/_basket.phtml')  ?>
+            <?php include $this->_script('cart/_coupon.phtml')  ?>
+            <div class="am-cart-checkout-buttons">
+                <input type="submit" class="am-cart-checkout-buttons-checkout" name="do-checkout" value="<?php __e('Checkout') ?>" />
+                <input type="submit" class="am-cart-checkout-buttons-update" name="calculate" value="<?php __e('Update') ?>" />
+                <input type="submit" class="am-cart-checkout-buttons-back" name="do-return" value="<?php __e('Continue Shopping') ?>" />
+                <input type="hidden" name="b" value="<?php p($b) ?>"/>
+            </div>
+        </form>
+        <?php else: ?>
+            <div class="am-cart-checkout-empty">
+                <?php __e('Your cart is empty. Click %shere%s to continue shopping.', '<a href="' . REL_ROOT_URL . '/cart">', '</a>') ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

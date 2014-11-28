@@ -1,0 +1,8 @@
+<h3><a href="<?php p($r->getUrl()) ?>"><?php p($r->title) ?></a></h3>
+<?php if ($r->desc) : ?>
+<p><?php p($r->desc) ?></p>
+<?php $type = $r->mime == 'audio/mpeg' ? 'audio' : 'video'; ?>
+<script type="text/javascript" id="am-<?php echo $type ?>-<?php echo $r->pk() ?>"
+    src="<?php p(REL_ROOT_URL) ?>/<?php echo $type ?>/js/id/<?php echo $r->pk() ?>">
+</script>
+<?php endif; ?>

@@ -1,0 +1,199 @@
+<?php
+if (!$isAjax) {
+    $this->setLayout('admin/layout.phtml');
+}
+function renderNode($id, Am_Record $c, Am_View $view) {
+    $out = sprintf('<li id="node-%d"><div>
+        <div class="tree-actions">
+        <a title="%s" href="javascript:;" class="edit">%s</a>
+        <a title="%s" href="javascript:;" class="add">%s</a>
+        <a title="%s" href="javascript:;" class="del">%s</a>
+        </div>
+        <span class="text">%s</span></div>',
+            $id,
+            ___('Edit'),
+            $view->icon('edit'),
+            ___('Add Child'),
+            $view->icon('add'),
+            ___('Delete'),
+            $view->icon('delete'),
+            Am_Controller::escape($c->title)
+    );
+    $out .= '<ul>';
+    foreach ($c->getChildNodes() as $child)
+        $out .= renderNode($child->pk(), $child, $view);
+    $out .= '</ul>';
+    $out .= '</li>';
+    return $out;
+}
+function getNodeData(Am_Record $c, & $data) {
+    $data[$c->pk()] = $c->toArray() + array('id' => $c->pk());
+    foreach ($c->getChildNodes() as $child)
+        getNodeData($child, $data);
+}
+?>
+<?php if ($note) : ?>
+<div class="info"><?php p($note) ?></div>
+<?php endif; ?>
+<div class="tree-wrapper">
+<ul class="tree-nodes">
+<?php
+foreach ($nodes as $node) {
+    echo renderNode($node->pk(), $node, $this);
+}
+$data = array();
+foreach ($nodes as $node) {
+    getNodeData($node, $data);
+}
+?>
+</ul>
+<!-- template for creating new nodes -->
+<ul style="display: none">
+<?php
+$tmpl->title = "TITLE";
+echo str_replace('999', 'TPL', renderNode(999, $tmpl, $this));
+?>
+</ul>
+<br />
+<input type="button" class="add-root" value="<?php __e('Add Root Node')?>" />
+<br />
+<br />
+<script type="text/javascript">
+    var nodes = <?php echo Am_Controller::getJson($data); ?>;
+</script>
+<div id="node-form" style="display:none">
+    <div class="am-form">
+        <form method="post" action="<?php $this->pUrl(null, 'save') ?>">
+            <div class="row">
+                <div class="element-title"><label for="node-title"><?php __e('Title') ?></label></div>
+                <div class="element"><input type="text" id="node-title" name="title" class="el-wide" /></div>
+            </div>
+            <div class="row">
+                <div class="element-title"><label for="node-description"><?php __e('Description') ?></label></div>
+                <div class="element">
+                    <textarea id="node-description" class="el-wide" rows="3" name="description"></textarea>
+                </div>
+            </div>
+            <?php if ($tmpl instanceof ProductCategory) : ?>
+            <div class="row">
+                <div class="element-title">
+                    <label for="node-code"><?php __e('Code') ?></label>
+                    <div class="comment"><?php __e('if code is present, products will be hidden in shopping cart and this code is required to see these products') ?></div>
+                </div>
+                <div class="element">
+                    <input id="node-code" type="text" name="code" size="12"/>
+                    <a href="javascript:;" class="generate-pass local"><?php __e('generate') ?></a>
+                </div>
+            </div>
+            <?php endif; ?>
+            <div class="row">
+                <div class="element-title"><label for="node-sort"><?php __e('Sort') ?></label></div>
+                <div class="element">
+                    <input type="text" id="node-sort" name="sort_order" size="4" value="0" />
+                </div>
+            </div>
+            <input type="hidden" name="parent_id" />
+            <input type="hidden" name="id" />
+        </form>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var frm = $("#node-form form");
+        function findRoot(id)
+        {
+            var found  = $("#node-"+id+" > ul");
+            if (found.length) return found;
+            return $(".tree-nodes");
+        }
+        $("#node-form").dialog({
+            buttons: {
+                'Ok' : function() {
+                    frm.ajaxSubmit({
+                        success: function(data){
+                            var id = data.id;
+                            if (nodes[id]) // existing category updated
+                            {
+                                $('#node-'+id+' > div span.text').text(data.title);
+                            } else { // new category added
+                                var tpl = $("li#node-TPL").html();
+                                tpl = tpl.replace(/TITLE/, data.title);
+                                findRoot(data.parent_id).append('<li id="node-'+id+'">' + tpl + '</li>');
+                            }
+                            nodes[id] = data;
+                            $("#node-form").dialog("close");
+                        },
+                        clearForm: true
+                    });
+                },
+                'Cancel' : function() { $(this).dialog("close"); }
+            },
+            modal : true,
+            title : "<?php j(___('Edit')) ?>",
+            width: 600,
+            autoOpen: false
+        });
+        $(".tree-wrapper").delegate("a.edit", "click", function(){
+            frm[0].reset();
+            frm.find('input[type=hidden]').val(""); //reset do not affect hidden fields
+            var li = $(this).closest("li");
+            var id = parseInt(li.attr("id").replace(/node-/, ''));
+            var record = nodes[id];
+            if (!record) return; // ????
+            for (var k in record)
+            {
+                var found = frm.find('input[name="'+k+'"]');
+                if (!found.length){
+                    found = frm.find('textarea[name="'+k+'"]');
+                    if (!found.length) continue;
+                }
+                found.val(record[k]);
+            }
+            $("#node-form").dialog("option", "title", "<?php j(___('Edit')) ?>").dialog("open");
+        });
+        $(".tree-wrapper").delegate("a.add", "click", function(){
+            var li = $(this).closest("li");
+            var id = parseInt(li.attr("id").replace(/node-/, ''));
+            frm[0].reset();
+            frm.find('input[type=hidden]').val(""); //reset do not affect hidden fields
+            $("input[name='parent_id']").val(id);
+            $("#node-form").dialog("option", "title", "<?php j(___('Add')) ?>").dialog("open");
+        });
+        $(".tree-wrapper").delegate("input.add-root", "click", function(){
+            frm[0].reset();
+            frm.find('input[type=hidden]').val(""); //reset do not affect hidden fields
+            $("#node-form").dialog("option", "title", "<?php j(___('Add')) ?>").dialog("open");
+        });
+        $(".tree-wrapper").delegate("a.del", "click", function(){
+            if (confirm("<?php j(___('Do you really want to delete this item?')) ?>"))
+            {
+                var li = $(this).closest("li");
+                var id = parseInt(li.attr("id").replace(/node-/, ''));
+                $.ajax({
+                    url : '<?php $this->pUrl(null, 'del') ?>/id/' + id,
+                    method: 'post',
+                    success: function(responseText)
+                    {
+                        if (responseText != "OK")
+                        {
+                            flashError("<?php j(___('Error deleting record! Please refresh page and try again')) ?>");
+                            return;
+                        }
+                        $("li#node-" + id + " > ul > li").detach().appendTo(li.closest("ul"));
+                        li.remove();
+                    }
+                });
+            }
+        });
+        $("a.generate-pass").click(function(){
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz";
+            var pass = "";
+            var len = 10;
+            for(var i=0; i<len; i++){
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            $(this).closest('.row').find("input").val(pass);
+        });
+    });
+</script>

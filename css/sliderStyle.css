@@ -1,0 +1,67 @@
+.carousel-wrapper {
+  width:100%;
+  overflow: hidden;
+  position: relative;
+  padding:12px 27px !important
+}
+
+.carousel-inner {
+  height: 100%;
+  position: relative;
+  padding: 0 0 0 50px;
+  left: 0;
+  margin: 0;
+  transition: all 1s;
+}
+
+.carousel-inner .itemS {
+  height: 100%;
+ /* float: left;*/
+  list-style: none;
+  /*padding: 0;*/
+  width:auto !important
+}
+
+/*.carousel-inner .itemS:before {
+  counter-increment: item;
+  content: counter(item);
+}*/
+
+.carousel-left,
+.carousel-right {
+  width: 18px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: url(grayArrow.png) no-repeat 0 0;
+}
+
+#campaignchieldthumb .carousel-left, #campaignchieldthumb .carousel-right{ top:38% !important}
+
+
+
+.carousel-left { left: 0; }
+
+.carousel-right { right: 0; background-position:-28px 0 }
+
+/*Demo styles*/
+
+.carousel-wrapper {
+  /*background: #055252;
+  padding: 30px 0;*/
+}
+ul.carousel-inner{ padding:0px}
+.carousel-inner .itemS {
+  /*background: #eee;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  
+  box-shadow: 1px 1px 3px 0 #333;*/
+  box-sizing: border-box;
+}
+
+.carousel-inner .item:hover {
+  background: #fff;
+  box-shadow: 1px 1px 3px 2px #333;
+}
+

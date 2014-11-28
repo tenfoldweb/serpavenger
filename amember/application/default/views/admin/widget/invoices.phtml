@@ -1,0 +1,35 @@
+<?php $lastInvoicesList = Am_Di::getInstance()->invoiceTable->selectLast($num,$statuses); ?>
+<div class="admin-last admin-lastinvoices">
+    <h2><?php __e('Last %s Invoices', $num); ?></h2>
+    <div class="grid-container">
+        <table class="grid">
+            <tr>
+                <th class="helper-corner-left" nowrap="nowrap"><?php __e('Date/Time') ?></th>
+                <th><?php __e('Invoice') ?></th>
+                <th><?php __e('Items') ?></th>
+                <th><?php __e('Billing Terms') ?></th>
+                <th class="helper-corner-right"><?php __e('User') ?></th>
+            </tr>
+            <?php foreach ($lastInvoicesList as $i): ?>
+            <tr<?php
+            if (@$rownum++% 2)
+            {
+            echo ' class="odd" ';
+            }
+            ?>>
+                <td nowrap="nowrap"><time datetime="<?php p(date('c', amstrtotime($i->tm_added))) ?>" title="<?php p($this->getElapsedTime($i->tm_added)) ?>"><?php p(amDate($i->tm_added)) ?><br /><small><?php p(amTime($i->tm_added)) ?></small></time></td>
+                <td><a class="link" href="<?php echo REL_ROOT_URL ?>/admin-user-payments/index/user_id/<?php p($i->user_id) ?>#invoice-<?php p($i->invoice_id) ?>"><?php p($i->invoice_id).p('/').p($i->public_id) ?></a><br />
+                    <small><?php p($i->paysys_id) ?>, <?php echo $i->getStatusTextColor() ?></small></td>
+                <td><?php p($i->items) ?></td>
+                <td><?php echo $i->getTerms() ?></td>
+                <td><?php if ($i->tm_added > $i->added && (amstrtotime($i->tm_added) - amstrtotime($i->added)) < 3600) : ?>
+                    <span style="background:#FFFFCF; padding:0 4px; font-size:8px; line-height:9px; text-transform: uppercase; border-radius:5px;"><?php __e('new') ?></span>
+                    <?php endif; ?>
+                    <strong><?php p($i->name) ?></strong>
+                    (<a class="link" href="<?php echo $this->userUrl($i->user_id) ?>"><?php p($i->login) ?></a>)<br />
+                    <?php p($i->email) ?></td>
+            </tr>
+            <?php endforeach ?>
+        </table>
+    </div>
+</div>

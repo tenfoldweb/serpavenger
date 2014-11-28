@@ -1,0 +1,183 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Renderanalysis extends MY_Controller {
+
+	public function __construct(){
+		parent::__construct();
+		//$this->load->library('analyze');
+		$this->load->model('model_analysis');
+	}
+        
+	public function siteage(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderUsersDomainAge($campaign_list, $campaign_server_engine,$site_type);
+		echo json_encode($renderList);
+	}
+	
+	public function sitepagecount(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+	
+		$renderList	= $this->model_analysis->renderUsersDomainPageCount($campaign_list, $campaign_server_engine,$site_type);
+		echo json_encode($renderList);
+	}
+	
+	public function sitewordcount(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		
+		$renderList	= $this->model_analysis->renderUsersDomainWordCount($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function sitekwratio(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderUsersDomainKWRatio($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function sitekwoptimization(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderUsersDomainKWOptimization($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function sitehidinglinks(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderUsersDomainHidingLinks($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	public function socialLinks(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderSocialLinks($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	
+	public function siteexternallinks(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderUsersDomainExternalLinks($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function siteexactkwanchors(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->renderUsersDomainExactKWAnchor($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function sitelongtermpageonerank(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		
+		$renderList	= $this->model_analysis->renderUsersLongTermPageOneRank($campaign_list, $campaign_server_engine);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function siteStat(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		
+		$renderList	= $this->model_analysis->rendersiteStat($campaign_list, $campaign_server_engine);
+		
+		echo json_encode($renderList);
+	}
+	
+	function randeronpageelement(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		
+		$renderList	= $this->model_analysis->renderonpageelement($campaign_list, $campaign_server_engine);
+		
+		echo json_encode($renderList);
+	}
+	
+	public function sitelinkelement(){
+		/*$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		
+		$renderList	= $this->model_analysis->renderUsersLinkElement($campaign_list, $campaign_server_engine);
+		
+		echo json_encode($renderList);*/
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$type				= $this->input->get_post('linkelement_search_type');
+		
+		$renderList	= $this->model_analysis->renderUsersLinkElement($campaign_list, $campaign_server_engine,$type);
+		
+		echo json_encode($renderList);
+	}
+	
+	function sitelongterm(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		
+		$renderList	= $this->model_analysis->renderlongtermsite($campaign_list, $campaign_server_engine);
+		
+		echo json_encode($renderList);
+	}
+	
+	
+	function sitefraceness(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		$site_type			= $this->input->get_post('site_type');
+		$renderList	= $this->model_analysis->rendersitefressness($campaign_list, $campaign_server_engine,$site_type);
+		
+		echo json_encode($renderList);
+	}
+	
+	
+	function siteLinkGraph(){
+		$this->check_login();
+		$campaign_list			= $this->input->get_post('campaign_list');
+		$campaign_server_engine		= $this->input->get_post('campaign_server_engine');
+		
+		$renderList	= $this->model_analysis->renderLinkGraph($campaign_list, $campaign_server_engine);
+		
+		echo json_encode($renderList);
+	}
+	
+	
+	
+}

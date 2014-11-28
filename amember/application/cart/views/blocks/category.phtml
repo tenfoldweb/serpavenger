@@ -1,0 +1,11 @@
+<?php /* Shopping cart categories */ ?>
+<div class="am-cart-category-list">
+    <div>
+        <form method="get">
+            <select name="c" style="width:100%">
+                <option value=''>-- <?php __e('Display All'); ?> --</option>
+                <?php echo $this->formOptions($this->productCategoryOptions) ?>
+            </select>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<?php $title = ___('Affiliate stats'); $this->setLayout('member/layout.phtml');
+$this->headLink()->appendStylesheet($this->_scriptCss('aff.css'));
+$this->enableReports();
+?>
+
+<?php $this->placeholder('report')->captureStart() ?>
+<?php echo $report; ?>
+<h2><?php __e('Report') ?></h2>
+<div class="grid-container">
+    <table class="grid">
+        <tr>
+            <th><?php __e('Date') ?></th>
+            <th><?php __e('Commission earned') ?></th>
+            <th><?php __e('Unique Clicks') ?></th>
+        </tr>
+        <?php
+        /* @var $result Am_Report_Result */
+        $quant = $result->getQuantity()->getId();
+        $points = 0;
+        $lines = $result->getLines();
+        $totals = array();
+        foreach ($result->getPointsWithValues() as $r):
+            $points++;
+            /* @var $r Am_Report_Point */
+            print "<tr>";
+            if ($quant == 'month') {
+                $hasValue = false;
+                foreach ($lines as $line) {
+                    if ($r->getValue($line->getKey())) {
+                        $hasValue = true;
+                        break;
+                    }
+                }
+                $href = $hasValue ? $this->url(array("monthyear"=>$r->getKey())) : '';
+            } elseif ($di->config->get('aff.affiliate_can_view_details')) {
+                $href = "javascript: showAffDetails(\"".$r->getKey()."\")";
+            } else {
+                $href = "";
+            }
+            printf("<td>%s</td>\n",
+                    $href ? sprintf("<a href='%s'>%s</a>", $this->escape($href), $r->getLabel()) : $r->getLabel());
+            foreach ($lines as $i=>$line){
+                printf("<td style='text-align:right'>%s</td>\n", !$r->getValue($line->getKey()) ? '&ndash;' :
+                        (($line->getKey() == 'commission') ?
+                            ($r->getValue($line->getKey()) >= 0 ?
+                                Am_Currency::render($r->getValue($line->getKey())) :
+                                '- ' . Am_Currency::render(abs($r->getValue($line->getKey())))) :
+                            $r->getValue($line->getKey())));
+                $totals[$i] = @$totals[$i]+$r->getValue($line->getKey());
+            }
+            print "</tr>\n";
+            print "<tr id='detail-".$r->getKey()."' class='aff-details' style='display: none'><td colspan='3'>\n";
+            print "<div style='float: right;'><a href='javascript:;' class='detail-close'>" . ___('Close') . "</a></div>\n";
+            print "<div class='content'></div>\n";
+            print "</td></tr>\n";
+        endforeach;
+        ?>
+        <tr style="font-weight: bold">
+            <td>TOTAL</td>
+            <?php 
+            foreach($totals as $k=>$v){
+                printf("<td style='text-align:right'>%s</td>\n", !$v ? '&ndash;' :
+                        (($k == 'commission') ?
+                            ($v >= 0 ?
+                                Am_Currency::render($v) : '- ' . Am_Currency::render(abs($v))) : $v));
+            }
+            ?>
+        </tr>
+    </table>
+</div>
+<?php $this->placeholder('report')->captureEnd(); ?>
+<?php echo $this->blocks('aff/top');
+
+if ($points > 0) 
+    echo $this->placeholder('report');
+else
+    echo ___('No records found');
+?>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("a.detail-close").click(function(){
+        $(this).parents("tr").hide();
+    });
+});
+function showAffDetails(date)
+{
+    var url = "<?php echo j($this->url(array('detailDate'=>'DATE'))) ?>";
+    jQuery("tr#detail-"+date).toggle();
+    jQuery("tr#detail-"+date+":visible .content").load(url.replace(/DATE/, date));
+}
+</script>

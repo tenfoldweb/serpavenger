@@ -1,0 +1,65 @@
+<?php $title = ___('E-Mail Users'); $this->setLayout('admin/layout.phtml'); ?>
+<?php include $this->_script('admin/_error.phtml'); ?>
+
+<div class="filter-wrap">
+    <span style="float:left; text-align: left; padding: 5px;">
+    <?php __e('You have currently choosed the following users for e-mail to:')?><br />
+    <strong><?php echo @$filterCondition ?></strong><br />
+    <?php __e('%d user(s) matches your search', $users_found)?>.
+    <a href="javascript:loadBrowseUsers()" class="browse-users local"><?php __e('browse')?></a>
+    </span>
+    <br />
+    <?php echo $search ?>
+</div>
+<?php echo $form; ?>
+<div id="email-history"></div>
+<div id="browse-users" style="display:none"></div>
+
+<script type="text/javascript">
+$(function(){
+    $("#email-history")
+        .load(window.rootUrl + "/admin-email/history-rows?_h_wrap=1",
+            function(){ $("#email-history .grid-wrap").ngrid(); });
+
+    //handle fiter state change
+    $("form").not("[id='am-form-email']").submit(function(event){
+        if (!$(this).data('fields-added')) {
+            $(this).data('fields-added', true);
+
+            event.stopPropagation();
+            event.preventDefault();
+
+            var f = $("form#am-form-email");
+            var subj = $('<input type="hidden" name="subject" />').val(f.find("input[name='subject']").val());
+            var is_html = f.find("input[name='format'][value='html']").is(':checked');
+            var fmt = $('<input type="hidden" name="format" />').val(is_html ? 'html' : 'text');
+            var bb = (is_html && CKEDITOR.instances['body-0']) ? CKEDITOR.instances['body-0'].getData() : f.find('[name="body"]').val();
+            var body = $('<input type="hidden" name="body" />').val(bb);
+
+            var $this = $(this);
+            $('[name^=files][type=hidden]', f).each(function(){
+                $this.append($('<input type="hidden" name="files[]" />').val($(this).val()))
+            })
+            $(this).append(subj).append(fmt).append(body);
+            $(this).submit(); // resubmit form with new fields
+        }
+    });
+});
+
+function loadBrowseUsers()
+{
+    var vars = $("#am-form-email").find(":input[name!='body']").serialize();
+    $("#browse-users").empty().dialog({
+        modal: true,
+        bgiframe: true,
+        autoOpen: true,
+        height: 500,
+        width: 730,
+        draggable: true,
+        resizeable: true,
+        title: "<?php j(___('Browse Found Users'))?>",
+    }).load(window.rootUrl + "/admin-email/browse-users", vars, function(){
+        $("#browse-users").ngrid();
+    });
+}
+</script>

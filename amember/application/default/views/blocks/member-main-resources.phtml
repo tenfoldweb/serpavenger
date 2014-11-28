@@ -1,0 +1,16 @@
+<?php if ($resources || $left_member_links): /* Customer have active subscriptions, display it if config allows */ ?>
+    <ul id="member-resources">
+        <?php foreach ($resources as $r): ?>
+            <?php if ($l = $r->renderLink()) : ?>
+            <li><?php echo $l; ?>
+                <?php if (@$r->desc) : ?>
+                    <div><?php echo @$r->desc;?></div>
+                <?php endif; ?>
+            </li>
+            <?php endif; ?>
+        <?php endforeach ?>
+        <?php foreach ($left_member_links as $u=>$t): ?>
+            <li><a href="<?php p($u) ?>"><?php echo $t ?></a></li>
+        <?php endforeach ?>
+    </ul>
+<?php endif ?>

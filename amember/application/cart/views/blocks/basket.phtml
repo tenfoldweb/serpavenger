@@ -1,0 +1,39 @@
+<?php /* Shopping cart contents */ ?>
+<div class="am-basket-preview">
+<?php if (count($cart->getItems())) : ?>
+    <table class="am-basket-preview-items">
+    <?php foreach ($cart->getItems() as $item): ?>
+    <tr class="am-basket-preview-item">
+        <td class="am-basket-preview-item-title"><?php p($item->item_title) ?></td>
+        <td class="am-basket-preview-item-qty">&times;<?php p($item->qty) ?></td>
+        <td class="am-basket-preview-item-total"><?php p($this->cart->getCurrency($item->first_total)) ?></td>
+    </tr>
+    <?php endforeach ?>
+    </table>
+    <div class="am-basket-preview-actions">
+        <a href="<?php $this->pUrl(null, 'view-basket') ?>"><?php __e('View Basket')?></a>
+    |
+        <a href="<?php $this->pUrl(null, 'checkout') ?>"><?php __e('Checkout')?></a>
+    </div>
+<?php else: ?>
+    <div class="am-basket-preview-empty">
+        <?php __e('Your cart is empty. Click %shere%s to continue shopping.', '<a href="' . REL_ROOT_URL . '/cart">', '</a>') ?>
+    </div>
+<?php endif; ?>
+</div>
+<script type="text/javascript">
+jQuery(function(){
+<?php foreach ($this->cart->getItems() as $item) : ?>
+    $('#am-cart-product-<?php p($item->item_id) ?>').
+        find('.am-cart-product-status').
+        empty().
+        append('<?php include $this->_script('cart/_product_status.phtml')  ?>');
+    <?php if (!$item->variable_qty) : ?>
+    $('#am-cart-product-<?php p($item->item_id) ?>').
+        find('input[type=button][name=add]').prop('disabled', 'disabled');
+    $('#am-cart-product-<?php p($item->item_id) ?>').
+        find('input[type=button][name=order]').prop('value', '<?php __e('Checkout') ?>');
+    <?php endif; ?>
+<?php endforeach; ?>
+})
+</script>

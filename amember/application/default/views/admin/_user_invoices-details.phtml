@@ -1,0 +1,142 @@
+<div class="user-invoice-record-details">
+    <!-- products -->
+    <div class="user-invoice-record-details-products">
+        <em><?php __e('Products')?></em>
+        <div class="grid-container">
+            <table class="grid grid-small">
+                <tr>
+                    <th>#</th>
+                    <th><?php __e('Title')?></th>
+                    <th><?php __e('First Price')?></th>
+                    <?php if ($invoice->rebill_times): ?><th><?php __e('Second Price')?></th><?php endif ?>
+                </tr>
+                <?php foreach ($invoice->getItems() as $item): /* @var $item InvoiceItem */?>
+                <tr>
+                    <td class="align-right"><?php p($item->item_id) ?></td>
+                    <td>
+                        <?php if ($item->qty != 1) echo "<em>$item->qty pcs -</em> " ?>
+                        <?php p($item->item_title) ?> [<a href="javascript:" class="replace-product local" data-invoice_item_id="<?php echo $item->invoice_item_id ?>" title="<?php __e('Replace Product') ?>"><?php __e('replace') ?></a>]</td>
+                    <td class="align-right"><?php echo $invoice->getCurrency($item->first_price) ?></td>
+                    <?php if ($invoice->rebill_times): ?><td class="align-right"><?php echo $invoice->getCurrency($item->second_price) ?></td><?php endif ?>
+                </tr>
+                <?php endforeach ?>
+                 <?php if (($invoice->first_discount+$invoice->second_discount) > 0): ?>
+                <tr>
+                    <td class="align-right"></td>
+                    <td class="align-right"><?php __e('Discount')?></td>
+                    <td class="align-right"><?php echo $invoice->getCurrency($invoice->first_discount) ?></td>
+                    <?php if ($invoice->rebill_times): ?><td class="align-right"><?php echo $invoice->getCurrency($invoice->second_discount) ?></td><?php endif ?>
+                </tr>
+                <?php endif ?>
+                <?php if (($invoice->first_shipping+$invoice->second_shipping) > 0): ?>
+                <tr>
+                    <td class="align-right"></td>
+                    <td class="align-right"><?php __e('Shipping')?></td>
+                    <td class="align-right"><?php echo $invoice->getCurrency($invoice->first_shipping) ?></td>
+                    <?php if ($invoice->rebill_times): ?><td class="align-right"><?php echo $invoice->getCurrency($invoice->second_shipping) ?></td><?php endif ?>
+                </tr>
+                <?php endif ?>
+                <?php if (($invoice->first_tax+$invoice->second_tax) > 0): ?>
+                <tr>
+                    <td class="align-right"></td>
+                    <td class="align-right"><?php __e('Tax Amount')?></td>
+                    <td class="align-right"><?php echo $invoice->getCurrency($invoice->first_tax) ?></td>
+                    <?php if ($invoice->rebill_times): ?><td class="align-right"><?php echo $invoice->getCurrency($invoice->second_tax) ?></td><?php endif ?>
+                </tr>
+                <?php endif ?>
+                <tr>
+                    <td class="align-right"></td>
+                    <td class="align-right"><strong><?php __e('Total')?></strong></td>
+                    <td class="align-right"><strong><?php echo $invoice->getCurrency($invoice->first_total) ?></strong></td>
+                    <?php if ($invoice->rebill_times): ?><td class="align-right"><strong><?php echo $invoice->getCurrency($invoice->second_total) ?></strong></td><?php endif ?>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- payments -->
+    <div class="user-invoice-record-details-payments">
+        <em><?php __e('Payments')?></em>
+        <div class="grid-container">
+            <table class="grid grid-small">
+                <tr>
+                    <th>#</th>
+                    <th><?php __e('Date/Time')?></th>
+                    <th><?php __e('Paysystem')?></th>
+                    <th><?php __e('Receipt')?></th>
+                    <th><?php __e('Amount')?></th>
+                    <?php if ($di->config->get('send_pdf_invoice')): ?>
+                    <th><?php __e('PDF Invoice') ?></th>
+                    <?php endif; ?>
+                    <th>&nbsp;</th>
+                </tr>
+                <?php foreach ($invoice->getRefundRecords() as $payment): /* @var $payment InvoiceRefund */?>
+                <tr class="red">
+                    <td><?php p($payment->invoice_refund_id) ?></td>
+                    <td><?php echo amDateTime($payment->dattm) ?></td>
+                    <td><?php echo $payment->paysys_id ?></td>
+                    <td><?php echo $payment->receipt_id ?></td>
+                    <td class="align-right">-&nbsp;<?php echo $invoice->getCurrency($payment->amount) ?></td>
+                    <?php if ($di->config->get('send_pdf_invoice')): ?>
+                    <td>&nbsp;</td>
+                    <?php endif; ?>
+                    <td>
+                        (<?php __e('refund') ?>)
+                    </td>
+                </tr>
+                <?php endforeach ?>
+                <?php $count = 0; foreach ($invoice->getPaymentRecords() as $payment): /* @var $payment InvoicePayment */?>
+                <tr>
+                    <td><?php p($payment->invoice_payment_id) ?></td>
+                    <td><?php echo amDateTime($payment->dattm) ?></td>
+                    <td><?php echo $invoice->paysys_id ?></td>
+                    <td><?php echo $payment->receipt_id ?></td>
+                    <td class="align-right"><?php echo $invoice->getCurrency($payment->amount) ?></td>
+                    <?php if ($di->config->get('send_pdf_invoice')): ?>
+                    <td>
+                    <a class="link" href="<?php p(REL_ROOT_URL.'/admin-user-payments/invoice/payment_id/'.$payment->pk()) ?>"><?php __e('Invoice') ?></a>
+                    </td>
+                    <?php endif; ?>
+                    <td>
+                        <?php  if ($payment->isRefunded()): ?>
+                        <span class="red"><?php __e('Refunded')?></span>
+                        <?php else:
+
+                        $refundDisplayed = false;
+                        try {
+                        if (Am_Di::getInstance()->plugins_payment->isEnabled($payment->paysys_id)
+                            && ($ps = Am_Di::getInstance()->plugins_payment->loadGet($payment->paysys_id))
+                            && $ps->isRefundable($payment)): ?>
+                        <a href="javascript:;" data-amount="<?php echo $payment->amount ?>" class="refund-button local" id="refund-button-<?php echo $payment->invoice_payment_id?>"><?php __e('Refund')?></a>
+                        <?php $refundDisplayed = true;
+                        endif ;
+                        } catch (Am_Exception $e) { echo $e->getMessage(); }
+
+                        if (!$refundDisplayed): ?>
+                        <a href="javascript:;" data-amount="<?php echo $payment->amount ?>" class="refund-button refund-button-manual local" id="refund-button-<?php echo $payment->invoice_payment_id?>"><?php __e('Refund')?></a>
+                        <?php
+                        endif; // if !$refundDisplayed
+                        endif; // if paysystemCanRefund
+                        ?>
+                    </td>
+                </tr>
+                <?php $count++; endforeach ?>
+            </table>
+        </div>
+        <?php if ($count < $invoice->rebill_times+1):
+
+        $suggestedAmount = 0.0;
+        if ($invoice->getStatus() != Invoice::PENDING)
+            $suggestedAmounts = "[$invoice->second_total]";
+        else
+            $suggestedAmounts = "[$invoice->first_total]";
+        ?>
+        <a href="javascript:;" class="add-payment-link local"
+           data-paysys_id="<?php echo $invoice->paysys_id ?>"
+           data-amounts="<?php echo $suggestedAmounts ?>"
+           data-invoice_id="<?php echo $invoice->invoice_id ?>"
+           id="add-payment-link-<?php echo $invoice->invoice_id ?>"><?php __e('Add Payment Manually')?></a>
+        <?php endif ?>
+    </div>
+    <?php $this->invoice = $invoice ?>
+    <?php echo $this->blocks('admin/user/invoice/details') ?>
+</div>

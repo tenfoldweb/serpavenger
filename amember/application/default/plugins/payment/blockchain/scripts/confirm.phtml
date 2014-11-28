@@ -1,0 +1,11 @@
+<?php
+$title = ___("Processing your Transaction");
+$this->setLayout('layout.phtml');
+?>
+<br />
+<?php include $this->_script('_receipt.phtml'); ?>
+<br />
+<br />
+<div class="make-payment-button">
+    <h2>Please send <?php echo $this->amount ?> BTC to <?php echo $this->input_address; ?></h2>
+</div>

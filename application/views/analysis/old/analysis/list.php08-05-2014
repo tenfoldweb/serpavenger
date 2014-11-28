@@ -1,0 +1,579 @@
+<script type="text/javascript" src="<?php echo FRONT_JS_PATH;?>analysis.js"></script>
+<section class="mainContainerSec">
+     <div class="submitter">
+            	<div class="sub_top rankings_dashboard">
+                    <div class="drop1">
+                        <select name="campaign_list" id="campaign_list">
+                            <option>Show All Combined</option>
+                            <?php
+			    if(is_array($campaign_list) && count($campaign_list) > 0){
+				for($i=0; $i<count($campaign_list); $i++){
+			    ?>
+				<option value="<?php echo stripslashes($campaign_list[$i]['campaign_id']);?>" <?php if($cid == $campaign_list[$i]['campaign_id']){echo 'selected';}?>><?php echo stripslashes($campaign_list[$i]['campaign_title']);?></option>
+			    <?php
+				}
+			    }
+			    ?>
+                        </select>
+                    </div>
+                    <div class="google">
+                    <span> <img src="<?php echo FRONT_IMAGE_PATH;?>icon-gplus.jpg"  alt=""/></span>
+                    <div class="drop1 google">                    
+			<select name="campaign_server_engine" id="campaign_server_engine">	    
+			<option value="google">Google</option>
+			<option value="yahoo">Yahoo</option>
+			<option value="bing">Bing</option>
+			</select>
+                    </div>
+                  </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="analysis_toppanel clear">
+                	<div class="leftbox">
+                    	<div class="content_heading clearfix">
+                        <h2>SERP Meter60%</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                        </div>
+                        
+                        <div class="metter"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img1.jpg" alt=""></div>
+                        <div class="textArea">
+                        <h3><span>Today:  60%</span>Yesterday:40%</h3>
+                        <h3>Week:  40%Month:50%</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="middlebox">
+                    	<div class="content_heading clearfix">
+                        <h2>SERP Rotation by Position</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                        </div>
+                        
+                        <div class="rotation"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img2.jpg" alt=""></div>
+                        
+                    </div>
+                    
+                    <div class="rightbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Anchor Profile of Top10</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                        </div>
+                        <div class="match"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img3.jpg" alt=""></div>
+                    </div>
+                     
+                     <div class="clear"></div>
+                </div>
+                
+                
+              <div class="clear"></div>
+                
+                <div class="sub_buttom">
+                	<div class="content_titel clearfix"><h2>SEO Snapshot (Top 10)</h2><span class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>img2.png" /></span></div>
+                    <div class="rating_inner">
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <div id="contain-site-age">
+						<h3 id="site-age-heading">4 Months</h3>						
+						<div class="mapArea">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+						<tr>
+						  <td>New: </td>
+						  <td> 30%</td>
+						  <td>&nbsp;</td>
+						  <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+						</tr>
+						<tr>
+						  <td>Young: </td>
+						  <td>50%</td>
+						  <td>&nbsp;</td>
+						  <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+						</tr>
+						<tr>
+						  <td>Old:  </td>
+						  <td>20%</td>
+						  <td>&nbsp;</td>
+						  <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+						</tr>
+						</table>
+						<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+						</div>
+			</div>
+                        <div id="loader-site-age" align="center" style="display: none; min-height: 50px; margin-top:10px;"><img src="<?php echo FRONT_IMAGE_PATH;?>loader.gif" alt="Loading"></div>
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="snapShotbox">
+                    	<div class="content_heading clearfix">
+                        <h2>Site Age</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>help_icon.png" alt=""></div>
+                        </div>
+                        <h3>4 Months</h3>
+                        
+                        <div class="mapArea">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" background="none">
+  <tr>
+    <td>New: </td>
+    <td> 30%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Young: </td>
+    <td>50%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td>Old:  </td>
+    <td>20%</td>
+    <td>&nbsp;</td>
+    <td><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img4.jpg" alt=""></td>
+  </tr>
+</table>
+					<div class="wave"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img5.jpg" alt=""></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    </div>
+                <br class="clear"/>
+              </div>
+                
+                
+                <div class="serp">
+                <div class="heading">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><p><span>Show Data For:&nbsp;&nbsp;Top 10</span></p></td>
+    <td><p>Top 3</p></td>
+    <td><p>News Sites</p></td>
+    <td><p>Authority/Parasites</p></td>
+    <td><p>Aged(1+Yr.)</p></td>
+    <td><p>Long Term</p></td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+
+                </div>
+                <div class="serpProfile">
+                    	<div class="content_heading clearfix">
+                        <h2>SERP Profile</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                        </div>
+                        
+                        <div class="leftPanel">
+                        <h2>New/ Recovered Sites</h2>
+                        	<div class="mainImage"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img6.jpg" alt=""></div>
+                        </div>
+                
+                        <div class="middlePanel">
+                        <h2>Authority/ Parasite </h2>
+                        	<div class="mainImage"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img7.jpg" alt=""></div>
+                        </div>
+                
+                        <div class="rightPanel">
+                        <h2>Aged Sites (1 Year +)</h2>
+                        	<div class="mainImage"><img src="<?php echo FRONT_IMAGE_PATH;?>analysis_img8.jpg" alt=""></div>
+                        </div>
+                
+                </div>
+                
+                <div class="serpProfile_right">
+                    	<div class="content_heading clearfix">
+                        <h2>Long-Term Page One Rankings</h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                        </div>
+                        <div class="para">30% Ranking for 60+ Days </div>
+                </div>
+                
+               </div> 
+                
+                
+                <div class="onpage">
+                    	<div class="content_heading clearfix">
+                        <h2>Onpage Elements <span>(Exact Keyword Optimized)</span></h2>
+                        <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                        </div>
+                        
+                        
+<div class="rating_inner">
+                 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td><p>Title&nbsp;URL</p></td>
+    <td><p>Descr</p></td>
+    <td><p>H1   H2</p></td>
+    <td><p>Above Fold</p></td>
+    <td><p>Image</p></td>
+    <td><p>Words</p></td>
+    <td><p>Min/ Max KW%</p></td>
+    <td><p>Min/ MaxExt Link</p></td>
+  </tr>
+  
+  <tr>
+   <td><p><span>TOP</span></p></td>
+    <td><p>100%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg"></p></td>
+    <td><p>40%<img src="<?php echo FRONT_IMAGE_PATH;?>red_arrow.jpg"></p></td>
+    <td><p>80%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">50%</p></td>
+    <td><p>10%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">75%<img src="<?php echo FRONT_IMAGE_PATH;?>red_arrow.jpg"></p></td>
+    <td><p>10%<img src="<?php echo FRONT_IMAGE_PATH;?>red_arrow.jpg"></p></td>
+    <td><p>429<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">52/</p></td>
+    <td><p>15282<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">0%</p></td>
+    <td><p>/8%60%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">(3)</p></td>
+  </tr>
+  
+  
+  <tr>
+   	<td><p><span>TOP</span></p></td>
+    <td><p>100%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg"></p></td>
+    <td><p>40%<img src="<?php echo FRONT_IMAGE_PATH;?>red_arrow.jpg"></p></td>
+    <td><p>80%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">50%</p></td>
+    <td><p>10%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">75%<img src="<?php echo FRONT_IMAGE_PATH;?>red_arrow.jpg"></p></td>
+    <td><p>10%<img src="<?php echo FRONT_IMAGE_PATH;?>red_arrow.jpg"></p></td>
+    <td><p>429<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">52/</p></td>
+    <td><p>15282<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">0%</p></td>
+    <td><p>/8%60%<img src="<?php echo FRONT_IMAGE_PATH;?>green_arrow.jpg">(3)</p></td>
+  </tr>
+  
+  
+  
+  
+  
+</table>
+
+                    </div>                        
+                        
+                </div>
+                
+                <div class="element">
+                <div class="heading">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><p><span>Show Data For:&nbsp;&nbsp;Top 10</span></p></td>
+    <td><p>Top 3</p></td>
+    <td><p>News Sites</p></td>
+    <td><p>Authority/Parasites</p></td>
+    <td><p>Aged(1+Yr.)</p></td>
+    <td><p>Long Term</p></td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+                </div>
+                
+                <div class="elementProfile">
+                <div class="content_heading clearfix">
+                <h2>Link Elements</h2>
+                <div class="help"><img src="<?php echo FRONT_IMAGE_PATH;?>setup2.png" alt=""></div>
+                </div>
+                <div class="element">
+                  <img src="<?php echo FRONT_IMAGE_PATH;?>link_element.jpg" alt=""> 
+                </div>
+                
+                <div class="showData">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><p><span>Show Data For:&nbsp;&nbsp;Top 10</span></p></td>
+    <td><p>Top 3</p></td>
+    <td><p>News Sites</p></td>
+    <td><p>Authority/Parasites</p></td>
+    <td><p>Aged(1+Yr.)</p></td>
+    <td><p>Long Term</p></td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+                </div>
+                </div>
+                
+                </div>
+                
+            </div>
+        </section>
+<script type="text/javascript">
+	/*
+	$(document).ready(function(){
+		$('#campaign_list').change(function(){
+			var campaignValue	= $(this).val();
+			if(campaignValue == ''){
+				window.location.href	= '<?php echo FRONT_URL;?>analysis/';
+			}else{
+				window.location.href	= '<?php echo FRONT_URL;?>analysis/?cid=' + campaignValue;
+			}
+		});
+	});
+	*/
+</script>

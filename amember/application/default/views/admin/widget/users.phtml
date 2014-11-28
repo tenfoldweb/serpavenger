@@ -1,0 +1,53 @@
+<?php $lastUsersList = Am_Di::getInstance()->userTable->selectLast($num); ?>
+<div class="admin-last admin-lastusers">
+    <h2><?php __e('Last %s Customers', $num); ?></h2>
+    <div class="grid-container">
+        <table class="grid">
+            <tr>
+                <th class="helper-corner-left"><?php __e('User') ?></th>
+                <th><?php __e('Status') ?></th>
+                <th><?php __e('Added') ?></th>
+                <th class="helper-corner-right"><?php __e('Payments') ?></th>
+            </tr>
+            <?php foreach ($lastUsersList as $u): ?>
+            <tr<?php
+            if (@$rownum++% 2)
+            {
+            echo ' class="odd" ';
+            }
+            ?>>
+                <td><strong><?php p($u->getName()) ?></strong>
+                    (<a class="link" href="<?php echo $this->userUrl($u->user_id) ?>"><?php p($u->login) ?></a>)<br />
+                    <?php p($u->email) ?></td>
+                <td>
+                    <?php
+                    switch ($u->status)
+                    {
+                        case User::STATUS_PENDING:
+                            if ($u->payments_count)
+                                echo '<span class="user-status-future">' . ___('Future') . '</span>';
+                            else
+                                echo '<span class="user-status-pending">' . ___('Pending') . '</span>';
+                            break;
+                        case User::STATUS_ACTIVE:
+                            echo '<span class="user-status-active">' . ___('Active') . '</span>';
+                            break;
+                        case User::STATUS_EXPIRED:
+                            echo '<span class="user-status-expired">' . ___('Expired') . '</span>';
+                            break;
+                    }
+                    ?>
+                </td>
+                <td><time datetime="<?php p(date('c', amstrtotime($u->added))) ?>" title="<?php p($this->getElapsedTime($u->added)) ?>"><small><?php echo amDatetime($u->added) ?></small></time></td>
+                <td>
+                    <?php if (!$u->payments_count): ?>
+                        <?php __e('Never') ?>
+                    <?php else: ?>
+                        <a class="link" href="<?php p(REL_ROOT_URL) ?>/admin-user-payments/index/user_id/<?php p($u->user_id) ?>"><?php p($u->payments_count) ?> - <?php p(Am_Currency::render($u->paid)) ?></a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach ?>
+        </table>
+    </div>
+</div>

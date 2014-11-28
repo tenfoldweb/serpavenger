@@ -1,0 +1,25 @@
+<?php $lastUsersList = Am_Di::getInstance()->userTable->findBy(array(), 0, $num, 'last_login DESC'); ?>
+<div class="admin-last admin-lastusers">
+    <h2><?php __e('Last %s User Signin', $num); ?></h2>
+    <div class="grid-container">
+        <table class="grid">
+            <tr>
+                <th class="helper-corner-left"><?php __e('User') ?></th>
+                <th><?php __e('Last Signin') ?></th>
+            </tr>
+            <?php foreach ($lastUsersList as $u): ?>
+            <tr<?php
+            if (@$rownum++% 2)
+            {
+            echo ' class="odd" ';
+            }
+            ?>>
+                <td><strong><?php p($u->getName()) ?></strong>
+                    (<a class="link" href="<?php echo $this->userUrl($u->user_id) ?>"><?php p($u->login) ?></a>)<br />
+                    <?php p($u->email) ?></td>
+                <td><?php echo $u->last_login ? $u->last_ip . ___(' at ') . '<time datetime="' . date('c', amstrtotime($u->last_login)) . '" title="' . $this->getElapsedTime($u->last_login) . '">' . amDatetime($u->last_login) . '</time>' : ___('Never') ?></td>
+            </tr>
+            <?php endforeach ?>
+        </table>
+    </div>
+</div>
